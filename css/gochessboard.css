@@ -1,0 +1,55 @@
+#bowls{
+    width: 300px;
+    height: 600px;
+    border: 1px solid black;
+    position: fixed;
+    left: 1000px;
+    top: 50px;
+}
+
+#whitebowl, #blackbowl{
+    width: 100%;
+    height: 50%;
+}
+
+#whitebowl{
+/*    background: orange;*/
+}
+
+#blackbowl{
+/*    background: green;*/
+}
+
+.row{
+    width: 900px;
+    height: 50px;
+    display: inline-block;
+    margin: -0px;
+}
+
+
+.col{
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    display: inline-block;
+    margin: -3px;
+}
+
+.black{
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background: black;
+    position: absolute;
+}
+
+.white{
+    width: 30px;
+    height: 30px;
+    border: 1px solid yellow;
+    border-radius: 50%;
+    background: yellow;
+    position: absolute;
+}

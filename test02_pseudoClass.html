@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pseudo-class and Pseudo-Element</title>
+    <style>
+        p::before{
+            content: open-quote;
+            font-size: 5em;
+/*            background: darkgreen;*/
+/*            color: aliceblue;*/
+            display: block;
+        }
+        p::after{
+            content: close-quote;
+            font-size: 5em;
+/*            background: darkgreen;*/
+/*            color: aliceblue;*/
+            display: block;
+        }
+        p::selection{
+            color: aliceblue;
+            background: darkgreen;
+        }
+        .wrapper{
+            display: inline-block;
+            width: 30%;
+        }
+        #first li:first-child, #second li:last-child, #third li:nth-child(odd), #fourth li:nth-child(even), #fifth li:nth-child(3n+1), #sixth li:nth-child(4n+2){
+            font-variant: small-caps;
+            color: #ff0000;
+        }
+        li:nth-child(6n+1)::after{
+            content: 'one';
+        }
+        li:nth-child(6n+2)::after{
+            content: 'two';
+        }
+        li:nth-child(6n+3)::after{
+            content: 'three';
+        }
+        li:nth-child(6n+4)::after{
+            content: 'four';
+        }
+        li:nth-child(6n+5)::after{
+            content: 'five';
+        }
+        li:nth-child(6n)::after{
+            content: 'six';
+        }
+    </style>
+</head>
+<body>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto reprehenderit laboriosam commodi recusandae architecto autem numquam provident, vel saepe nobis in, quo, officiis. Quis minima repudiandae cupiditate, sunt voluptate? Totam.</p>
+    <div>
+        <h2>Child Selectors</h2>
+        <div class="wrapper" id="first">
+            <span>ul: first-child</span>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="wrapper" id="second">
+            <span>ul: last-child</span>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="wrapper" id="third">
+            <span>ul: nth-child(odd)</span>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="wrapper" id="fourth">
+            <span>ul: nth-child(even)</span>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="wrapper" id="fifth">
+            <span>ul: nth-child(3n+1)</span>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="wrapper" id="sixth">
+            <span>ul: nth-child(4n+2)</span>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

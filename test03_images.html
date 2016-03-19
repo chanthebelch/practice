@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IMAGES</title>
+    <style>
+        section{
+            height: 1000px;
+        }
+        figure{
+            position: relative;
+            display: inline-block;
+            width: 25%;
+            height: 25%;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        figcaption {
+            opacity: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+        }
+        figure:hover figcaption {
+            opacity: 1;
+        }
+    </style>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('img').each(function() {
+                var alt = $(this).next().text();
+                $(this).attr('alt', alt);
+            });
+        });
+    </script>
+</head>
+<body>
+    <section>
+        <figure>
+            <img src="images/animal-farm-childrens-book-4-638.jpg" alt="">
+            <figcaption>Animal Farm</figcaption>
+        </figure>
+        <figure>
+            <img src="images/animal-farm-powerpoint-3-728.jpg" alt="">
+            <figcaption>Snowball</figcaption>
+        </figure>
+        <figure>
+            <img src="images/animal-farm-powerpoint-4-728.jpg" alt="">
+            <figcaption>Napoleon</figcaption>
+        </figure>
+        <figure>
+            <img src="images/animal-farm-powerpoint-6-728.jpg" alt="">
+            <figcaption>Mr. Jones</figcaption>
+        </figure>
+        <figure>
+            <img src="images/animal-farm-powerpoint-intro-7-728.jpg" alt="">
+            <figcaption>Benjamin</figcaption>
+        </figure>
+        <figure>
+            <img src="images/animal-farm.jpg" alt="">
+            <figcaption>Book Cover</figcaption>
+        </figure>
+        <figure>
+            <img src="images/animal_farm_newspaper.jpg" alt="">
+            <figcaption>Newspaper</figcaption>
+        </figure>
+        <figure>
+            <img src="images/animalfarm.jpg" alt="">
+            <figcaption>All Animals Are Equal</figcaption>
+        </figure>
+        <figure>
+            <img src="images/TheSevenCommandment.jpg" alt="">
+            <figcaption>The Seven Commandment</figcaption>
+        </figure>
+    </section>
+</body>
+</html>

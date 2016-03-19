@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chapter 2 - navigation</title>
+    <style>
+        #lance ul {
+            min-width: 500px;
+            float: left;
+            box-sizing: border-box;  /* important because of padding and width setting below */
+            width: 100%;
+            margin: 0;
+            padding: 10px 0 0 46px;
+            list-style: none;
+            background: #ffcb2d;
+            border-bottom: 1px solid black;
+        }
+        #lance li {
+            float: left;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+/*            font-size: 55%;*/
+        }
+        #lance a {
+            
+            display: block;
+            margin: 0 1px -1px 0;
+            padding: 4px 8px;
+            color: #333;
+            text-decoration: none;
+            border: 1px solid black;
+/*            border-bottom: none;*/
+            background: #f9e9a9;
+        }
+        #lance a:hover {
+            border-bottom: none;
+            padding-bottom: 5px;
+            color: #000;
+            background: #fff;
+        }
+        #mozilla {
+            width: 100%;  /* 这样float的元素就不会乱跑了！ */
+            min-width: 500px;
+            float: left;
+            color: #fff;
+            background-color: hsla(200, 80%, 40%, 1);
+            background-image: -webkit-linear-gradient(bottom, #004b8b 45%, #008fff 100%);
+            border-radius: 10px;
+            margin-top: 100px;
+        }
+        #icon-left {
+            float: left;
+            margin: 20px 0 0 20px;
+        }
+        #icon-left a {
+            text-decoration: none;
+        }
+        #icon-left a * {
+            vertical-align: middle;
+        }
+        #icon-left a span {
+            font-size: 30px;
+            margin-left: 10px;
+            color: #fff;
+        }
+        #nav-right {
+            float: right;
+            margin: 0px 20px 0 50px;
+        }
+        #searchbox {
+            margin: 20px 0 10px 0;
+        }
+        #searchbox input {
+            border-radius: 2px;
+            outline-color: #ff0000;
+        }
+        #searchbox button {
+            border-radius: 15px;
+            background-color: #fff;
+            background-image: -webkit-linear-gradient(bottom, #999 45%, #eee 100%)
+        }
+        #nav-right ul {
+            float: right;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #nav-right ul li {
+            float: left;
+            margin: 0 1px;
+        }
+        #nav-right ul li a {
+            display: block;
+            padding: 5px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #333;
+            border-radius: 5px 5px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="lance">
+            <ul>
+                <li id="t-intro"><a href="">Introduction</a></li>
+                <li id="t-about"><a href="">About Lance</a></li>
+                <li id="t-news"><a href="">News &amp; Events</a></li>
+                <li id="t-sponsors"><a href="">Sponsors</a></li>
+            </ul>
+        </nav>
+        <nav id="mozilla">
+            <div id="icon-left">
+                <a href=""><img src="images/mozilla-icon.png" alt="mozilla icon"><span>Mozilla</span></a>
+            </div>
+            <div id="nav-right">
+                <div id="searchbox">
+                    <label for="search">search mozilla: </label>
+                    <input type="text" name="search">
+                    <button>Go</button>
+                </div>
+                <ul>
+                    <li><a href="">Products</a></li>
+                    <li><a href="">Support</a></li>
+                    <li><a href="">Store</a></li>
+                    <li><a href="">Developers</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</body>
+</html>

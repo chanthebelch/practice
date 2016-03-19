@@ -1,0 +1,1338 @@
+html { 
+  background: #000; 
+}
+
+* { /* Otherwise all those replaced images = selectable + GROSS */
+  user-select: none;
+}
+
+.loaded #loader { display: none;}
+
+#loader {
+  background: url(//stash.rachelnabors.com/oz/loading/bg_loading.jpg?3) 0 0 no-repeat;
+  animation: down-the-hole .5s steps(2) infinite;
+  transition: opacity .01s linear 2s;
+}
+
+@keyframes down-the-hole {
+  0% {background-position: 0 -450px;}
+  100% {background-position: 0 -1350px;}
+}
+
+#loader .dolly { transition: opacity .01ms linear -.01ms;
+opacity: 0;}
+
+.here-we-go #loader .dolly {
+  background: url(//stash.rachelnabors.com/oz/loading/dolly.png) 0 0 no-repeat;
+  opacity: 1;
+  top: -151px; left: 213px;
+  width: 218px; height: 463px;
+  animation: dolly-fall 2.5s ease-in 1;
+  animation-fill-mode: forwards;
+}
+
+.here-we-go #loader { 
+  background: url(//stash.rachelnabors.com/oz/loading/bg_loading.jpg?3) 0 0 no-repeat;
+  animation: none;
+}
+
+@keyframes dolly-fall {
+  0% {top: -151px;}
+  35% { top: -250px; }
+  100% {top: 1500px;}
+}
+
+#portal, #loader {
+  width: 650px; height: 450px;
+  position: absolute;
+  top: 40px; left: 50%;
+  margin-left: -325px;
+  overflow: hidden;
+}
+
+.loaded #portal {transition: opacity .01s; }
+
+.loading #portal { opacity: 0; } /* hide portal till everything is loaded */
+
+#opening { 
+  background: #000;
+  opacity: 1;
+  width: 650px; height: 450px; position: absolute;
+  transition: opacity 2s ease-out 7s;
+}
+
+#opening.playing {
+  opacity: 0;
+}
+
+.scene {
+  position: absolute;
+  width: 650px; height: 450px;
+  z-index: 10;/*Scenes top everything but loading screens*/
+}
+
+.cut { width: 100%; height: 100%; position: absolute; }
+
+.playing .cut {
+  /*using a background image here, but I'd rather use a mask and gradient in the future, when browsers catch up.*/
+  background: url(//stash.rachelnabors.com/oz/opening/cut-hole.png?1)  70% 60% no-repeat /*radial-gradient(432px 257px, circle, transparent 650px, black 650px)*/;
+  background-size: 3000px 2077px;
+  animation: cut-hole 1s linear 1 1.25s;
+  animation-fill-mode: forwards;
+  z-index: 6;
+}
+
+@keyframes cut-hole {
+  0% {  background-size: 3000px 2077px; }
+  100% {  background-size: 650px 450px;}
+}
+
+#scene1 .setting {
+  background: url("//stash.rachelnabors.com/oz/opening/bg_opening.png") 0 0 no-repeat;
+  width: 650px; height: 450px;
+}
+
+#scene1 .dolly-fling {
+  background: url("//stash.rachelnabors.com/oz/opening/flying-up.png");
+  opacity: 1;
+  left: 289px; bottom: -127px;
+  width: 77px; height: 127px;
+}
+
+.playing #scene1 .dolly-fling {
+  bottom: 58px;
+  opacity: 0;
+  transition: bottom .15s linear, opacity .01s .16s;
+}
+
+#scene1 .dolly-flop {
+  background: url("//stash.rachelnabors.com/oz/opening/sprite_landing.png") 0 232px no-repeat;
+  left: 288px; top: 123px;
+  width: 241px; height: 232px;
+}
+
+.playing #scene1 .dolly-flop {
+  animation: dolly-landing .75s steps(10,start) 1 .16s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes dolly-landing {
+  0% {background-position: 0 232px;}
+  100% {background-position: 0 -2098px;}
+}
+
+/* fade out scene 1 and roll scene2 */
+.playing #scene1 {
+  opacity: 0;
+  transition: opacity .01s linear 4s;
+}
+
+/* Scene2 slides in slowly... */
+#scene2 {
+  background: #0e1318 url("//stash.rachelnabors.com/oz/opening/quadling.jpg") 100px 0 no-repeat;
+  z-index: 1;
+}
+
+.loaded #scene2 { transition: background-position 4s linear 2.5s, opacity 1.5s ease-out 6s;}
+
+.playing #scene2 {  
+  background-position: 0 0;
+  opacity: 0;
+}
+
+/* Hide map while loading */
+.loading #map {opacity: 0; }
+
+/* add transition to it when loaded */
+.loaded #map {  transition: opacity 2s ease-out 8s, top 1s ease-out, left 1s ease-out;}
+#map {
+  background: #720b0a url("//stash.rachelnabors.com/oz/bg_world.jpg?9") -0 0 no-repeat;
+  opacity:1;
+  position: absolute;
+  top: 0; left: -967px;
+  width: 2517px; height: 1864px;
+}
+
+.stage {
+  position: absolute;
+  width: 650px; height: 450px;
+  z-index: 0;
+}
+
+/*initial settings */
+.initial { transition: none; }
+
+#portal .dolly, .arrow, .toothy { 
+  opacity: 0; 
+  transition: opacity .2s ease-out 1s;
+}
+
+.location { z-index: 1;}
+
+.location .dolly, .location .arrow, .location .toothy {
+  opacity: 1 !important; /* Overrides the inline opacity setting from JS*/
+}
+
+/* Image replacement */
+.ir {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  position: absolute;
+}
+.ir br { display: none; }
+
+/* Interactivity */
+.clickable { cursor: pointer; }
+
+input[type=checkbox] {
+   display: none;
+   /* For mobile, it's typically better to position checkbox on top of clickable
+      area and turn opacity to 0 instead. */
+}
+
+.activatable, .activatable * {
+  animation-play-state: paused;
+}
+
+.activated, .activated * {
+  animation-play-state: running;
+}
+
+.shared .switch-handler, .shared .activatable{ z-index: 2; } /* Make sure shared controls float on top of any overlapping layers */
+
+.sign, .secret-room, .pass-field { 
+  display: none; 
+  z-index: 2;
+}
+
+.secret { position: absolute; }
+
+.arrow { 
+  background: url("//stash.rachelnabors.com/oz/arrow.png") 0 0 no-repeat;
+  width: 24px; height: 65px;
+}
+
+.scraps {  width: 61px; height: 39px; }
+
+.lantern-heads {
+  width: 158px; height: 100px;
+  z-index: 1;
+}
+
+.lantern {
+  background: url("//stash.rachelnabors.com/oz/sprite_lantern.png") 0 100% no-repeat;
+  width: 190px; height: 342px;
+}
+
+.lantern-glow {
+  background: url("//stash.rachelnabors.com/oz/sprite_lantern.png");
+  width: 190px; height: 342px;
+}
+
+.on { transition: opacity 1s linear;}
+
+.switch-handler { z-index: 1; }
+
+.switch:checked ~ .on {
+  opacity: 0;
+}
+
+.lantern5 .lantern-heads { left: 1842px; top: 927px;}
+
+.lantern5 .lantern, .lantern5 .lantern-glow { 
+  left: 1820px; top: 927px; 
+  z-index: 1;
+}
+
+.bulbs, .bulbs-glow {
+  width: 67px; height: 54px;
+  top: 1423px; left: 1454px;
+}
+
+.bulbs.off { background: url("//stash.rachelnabors.com/oz/room10/sprite_bulbs.png") 0 0 no-repeat;}
+
+.bulbs-glow { background: url("//stash.rachelnabors.com/oz/room10/sprite_bulbs.png") 0 -54px no-repeat;}
+
+.fountain {
+  background: url("//stash.rachelnabors.com/oz/room5/sprite_fountain.png");
+  left: 1109px; top: 1076px;
+  width: 62px; height: 103px;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation: fountain-spray .51s steps(2) infinite;
+}
+
+.fountain.activated {
+  animation: fountain-spurt 2s steps(7) 2 alternate;
+}
+
+@keyframes fountain-spray {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 -206px; }  
+}
+
+@keyframes fountain-spurt {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 -721px; }  
+}
+
+.painapple { width: 54px; height: 40px; }
+
+#sign_book4 {
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?4")  0 -1064px  no-repeat;
+  left: 1956px; top: 914px;
+  width: 188px; height: 112px;
+}
+
+.pass-field {
+  background: #330b13;
+  border-radius: 4px;
+  color: #e0763e;
+  padding: 10px;
+  position: absolute;
+  width: 300px;
+  text-align: center;
+  top: 125px; left: 50%;
+  margin-left: -150px;
+  z-index: 3;
+}
+
+.pass-wrap {
+  border: dashed #5d070e 2px;
+  padding: 10px;
+}
+
+.pass-field label { text-transform: uppercase; }
+
+.pass-field input { 
+  box-sizing: border-box;
+  display: block; 
+  margin-top: .75em;
+  padding: .5em 2em;
+  text-align: center;
+  width: 100%;
+}
+
+.pass-field input[type="submit"] { 
+  background: #a12e04;
+  border: 0;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.pass-field input[type="text"] { 
+  background: #d39981;
+  border: 0;
+}
+
+
+/* Room 1 */
+
+#room1 { top: 0; left: 967px; }
+
+.in-room1 #map {
+  top: 0; left: -967px;
+}
+
+/* Show sitting dolly on first load, hide all other times. */
+.initial .dolly-sitting { display: block; }
+.initial .arrow { opacity: 1; }
+.dolly-sitting { display: none; }
+
+.in-room1 .dolly-standing {
+  background: url("//stash.rachelnabors.com/oz/room1/sprite_dolly_standing.png") 0 0 no-repeat;
+  width: 137px; height: 263px;
+  left: 254px; top: 119px;
+}
+
+#room1 .dolly-sitting {
+  background: url("//stash.rachelnabors.com/oz/room1/sprite_dolly_sitting.png");
+  width: 122px; height: 177px;
+  left: 248px; top:180px;
+}
+
+#room1 .dolly-sitting .dolly_eyes {
+  animation: room1_dolly_blink 3s steps(2, start) infinite;
+  background: url("//stash.rachelnabors.com/oz/room1/sprite_dolly_sitting.png") 0 -177px no-repeat;
+  top: 11px; left: 53px;
+  width: 18px; height: 15px;
+}
+
+@keyframes room1_dolly_blink {
+  0% { background-position: 52px 10px; }
+   15% { background-position: 0 -177px; }
+  85% { background-position: 52px 10px; }
+  100% { background-position: 0 -177px; } /* shows eyes */
+}
+
+#room1 .dolly-sitting .dot-n-tot_eyes {
+  animation: room1_dot-n-tot_blink 2s steps(1, start) 1s infinite;
+  background: url("//stash.rachelnabors.com/oz/room1/sprite_dolly_sitting.png") -104px -177px no-repeat;
+  top: 147px; left: 98px;
+  width: 18px; height: 15px;
+}
+
+@keyframes room1_dot-n-tot_blink {
+  0% { background-position: 0 0; }
+   15% { background-position: -104px -177px; }
+  75% { background-position: 0 0; }
+  100% { background-position: -104px -177px; } 
+}
+
+#room1 .mousey {
+  width: 56px; height:19px;
+  position: absolute;
+  left: 245px; top: 359px;
+}
+
+#room1 .mouse-hole {
+  background: url("//stash.rachelnabors.com/oz/room1/sprite_mouse.png") 0 -19px no-repeat;
+  width: 56px; height:19px;
+  position: absolute;
+}
+
+#room1 .mouse {
+  background: url("//stash.rachelnabors.com/oz/room1/sprite_mouse.png") 0 0 no-repeat;
+  width: 28px; height:19px;
+  position: absolute;
+  top: 0; left: 16px;
+}
+
+#room1 .activated .mouse { animation: mouse-poke 2s linear 1; }
+
+@keyframes mouse-poke {
+  50% { top: 1px; left: 43px; } 
+}
+
+#room1 .lanterns-heads {
+  width: 316px; height: 100px;
+  top: 9px; left: 148px;
+  z-index: 1;
+}
+
+#room1 .lantern, #room1 .lantern-glow {
+  background: url("//stash.rachelnabors.com/oz/room1/sprite_lanterns.png");
+  width: 316px; height: 342px;
+  top: 9px; left: 148px;
+}
+
+#room1 .lantern.off { background-position: 0 -342px; }
+
+#room1 input[type=checkbox]:checked ~ .lanterns {
+  background: url("//stash.rachelnabors.com/oz/room1/lanterns_off.png");
+}
+
+#room1 .readable {
+  left: 453px; top: 290px;
+  width: 53px; height: 37px;
+}
+
+#room1 .sign {
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png") 0 0 no-repeat;
+  left: 415px; top: 197px;
+  width: 118px; height: 86px;
+}
+
+#room1 .to-room4 {
+  left: 462px; top: 318px;
+  transform: rotate(110deg);
+}
+
+#room1 .to-room2 {
+  left: 205px; top: 340px;
+  transform: rotate(200deg);
+}
+
+/* Room 2 */
+
+#room2 { left: 1025px; top: 476px;}
+
+.in-room2 #map { left: -1025px; top: -476px;}
+
+#room2 .dolly {
+  background: url("//stash.rachelnabors.com/oz/room2/sprite_dolly.png") 0 0 no-repeat;
+  left: 235px; top: 66px;
+  width: 83px; height: 145px;
+}
+
+#room2 .blood {
+  background: url("//stash.rachelnabors.com/oz/room2/sprite_blood.png") 0 0 no-repeat;
+  animation: drip 6s steps(7) infinite;
+  left: 503px; top: 124px;
+  width: 18px; height: 71px;
+}
+
+@keyframes drip {
+  0% { background-position: 0 0; }
+  90% { background-position: 0 0; }
+  100% { background-position: 0 -497px; }
+}
+
+.well {
+  background: url("//stash.rachelnabors.com/oz/room2/sprite_well.png") 0 0 no-repeat;
+  left: 1377px; top: 772px;
+  width: 91px; height: 84px;
+}
+
+.well.activated {  animation: well-turn 2s steps(6) 2 alternate;}
+
+@keyframes well-turn {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 -504px; }
+}
+
+#room2 .scraps {
+  left: 163px; top: 330px;
+}
+
+#sign_scraps {
+  background: url("//stash.rachelnabors.com/oz/room2/sprite_papers.png") 0 -450px no-repeat;
+  left: 105px; top: 10px;
+  width: 453px; height:433px
+}
+#room2 .album {
+  left: 196px; top: 138px;
+  width: 48px; height: 39px;
+}
+
+#sign_album {
+  background: url("//stash.rachelnabors.com/oz/room2/sprite_papers.png") -66px -22px no-repeat;
+  left: 66px; top: 22px;
+  width: 518px; height:401px
+}
+
+#room2 .to-room1 {
+  left: 58px; top: 46px;
+  transform: rotate(30deg);
+}
+
+#room2 .to-room3 {
+  left: 32px; top: 151px;
+  transform: rotate(-70deg);
+}
+
+#room2 .to-room5 {
+  left: 114px; top: 369px;
+  transform: rotate(190deg);
+}
+
+/* Room 3 */
+
+#room3 { left: 441px; top: 331px;}
+
+.in-room3 #map { left: -441px; top: -331px;}
+
+#room3 .dolly {
+  background: url("//stash.rachelnabors.com/oz/room3/sprite_dolly.png") 0 0 no-repeat;
+  left: 398px; top: 172px;
+  width: 91px; height: 148px;
+}
+
+#room3 .toothy {
+  background: url("//stash.rachelnabors.com/oz/room3/sprite_toothy.png") 0 0 no-repeat;
+  animation: toothy-lick 1s steps(6) infinite alternate;
+  left: 363px; top: 289px;
+  width: 36px; height: 51px;
+}
+
+@keyframes toothy-lick {
+  0% { background-position: 0 0 ;}
+  100% { background-position: 0 -306px }
+}
+
+#room3 .potatoe { 
+  left: 112px; top: 245px;
+  width: 48px; height: 21px;
+}
+
+.in-room3 #sign_potatoe {
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?1") 0 -86px no-repeat;
+  left: 76px; top: 143px;
+  width: 105px; height: 73px;
+}
+
+#room3 .recipe-scrap1 { 
+  left: 304px; top: 349px;
+  width: 27px; height: 19px;
+}
+
+#sign_recipe-scrap1 {
+  background: url("//stash.rachelnabors.com/oz/room3/paper.png") 0 -0 no-repeat;
+  left: 99px; top: 38px;
+  width: 409px; height: 359px;
+}
+
+#room3 .to-room2 {
+  left: 528px; top: 222px;
+  transform: rotate(90deg);
+}
+
+#room3 .to-room6 {
+  left: 146px; top: 282px;
+  transform: rotate(220deg);
+}
+
+/* Room 4 */
+#room4 { left: 1618px; top: 344px;}
+
+.in-room4 #map { left: -1618px; top: -344px;}
+
+#room4 .dolly {
+  background: url("//stash.rachelnabors.com/oz/room4/sprite_dolly.png") 0 0 no-repeat;
+  left: 415px; top: 222px;
+  width: 133px; height: 172px;
+}
+
+#room4 .pumpkin {
+  background: url("//stash.rachelnabors.com/oz/room4/sprite_pumpkin.png") 0 0 no-repeat;
+  animation-fill-mode: forwards;
+  left: 362px; top: 380px;
+  width: 29px; height: 20px;
+}
+
+.in-room4 .pumpkin {  animation: pumpkin-grin 2s steps(11) 1 1s;}
+
+@keyframes pumpkin-grin {
+  0% { background-position: 0 0 ;}
+  100% { background-position: 0 -220px }
+}
+
+#room4 .note { 
+  left: 360px; top: 135px;
+  width: 63px; height: 51px;
+}
+
+#sign_note {
+  background: url("//stash.rachelnabors.com/oz/room4/paper.png") 0 -0 no-repeat;
+  left: 138px; top: 14px;
+  width: 368px; height: 413px;
+}
+
+#room4 .to-room1 {
+  left: 49px; top: 185px;
+  transform: rotate(310deg);
+}
+
+#room4 .to-room14 {
+  left: 187px; top: 365px;
+  transform: rotate(220deg);
+}
+
+/* Room 5 */
+#room5 { left: 819px; top: 772px;}
+
+.in-room5 #map { left: -819px; top: -772px;}
+
+#room5 .dolly {
+  background: url("//stash.rachelnabors.com/oz/room5/sprite_dolly.png") 0 0 no-repeat;
+  left: 242px; top: 134px;
+  width: 108px; height: 155px;
+}
+
+#room5 .scraps { left: 369px; top: 33px;}
+
+#room5 .lantern-heads { top: 0; left: 64px;}
+
+#room5 .lantern, #room5 .lantern-glow { top: 0; left: 48px;}
+
+#room5 .moth {
+  background: url("//stash.rachelnabors.com/oz/room5/sprite_moth.png");
+  left: 179px; top: 21px;
+  width: 31px; height: 32px;
+  animation: moth-flutter 1.5s steps(3) infinite;
+}
+
+@keyframes moth-flutter {
+  0% { background-position: 0 0; }
+  65% { background-position: 0 -96px; }
+}
+
+#room5 .cucu { 
+  left: 426px; top: 224px;
+  width: 43px; height: 49px;
+}
+
+#sign_cucu {
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?3") 0 -159px no-repeat;
+  left: 396px; top: 141px;
+  width: 122px; height: 74px;
+}
+
+#secret-room1 {
+  background: url("//stash.rachelnabors.com/oz/room5/secret-room1.png");
+  position: absolute;
+  width: 631px; height: 450px;
+  left: 18px; top: 0;
+  z-index: 3;
+}
+
+#secret-room1 .photo-witches {
+  width: 37px; height: 46px;
+  top: 199px; left: 473px;
+}
+
+#sign_photo-witches {
+  background: url("//stash.rachelnabors.com/oz/room5/photo.png");
+  width: 333px; height: 418px;
+  top: 16px; left: 138px;
+}
+
+#secret-room1 .diary {
+  width: 76px; height: 41px;
+  top: 162px; left: 207px;
+}
+
+#sign_diary {
+  background: url("//stash.rachelnabors.com/oz/room5/diary.png");
+  width: 626px; height: 450px;
+  top: 0; left: -18px;
+}
+
+#room5 .to-room2 {
+  left: 329px; top: 55px;
+  transform: rotate(380deg);
+}
+
+#room5 .to-room13 {
+  left: 487px; top: 305px;
+  transform: rotate(100deg);
+}
+
+#room5 .to-room7 {
+  left: 92px; top: 291px;
+  transform: rotate(245deg);
+}
+
+#room5 .to-secret-room1 {
+  left: 0; top: 103px;
+  width: 130px; height: 200px;
+}
+
+/* Room 6 */
+#room6 { left: 0; top: 553px;}
+
+.in-room6 #map {left: 0; top: -553px; }
+
+#room6 .dolly {
+  background: url("//stash.rachelnabors.com/oz/room6/sprite_dolly.png") 0 0 no-repeat;
+  left: 169px; top: 144px;
+  width: 152px; height: 151px;
+  animation: hmm .5s steps(2) infinite;
+}
+
+@keyframes hmm {
+  0% { background-position: 0 0;}
+  100% {background-position: 0 -304px;}
+}
+
+.in-room6 #sign_potatoe {
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png") 0 -234px no-repeat;
+  left: 501px; top: 46px;
+  width: 104px; height: 77px;
+}
+
+#room6 .potatoe {
+  width: 43px; height: 26px;
+  left: 562px; top: 16px;
+}
+
+#room6 .moonflower {
+  width: 59px; height: 38px;
+  left: 56px; top: 196px;
+}
+
+#sign_moonflower {
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png") 0 -311px no-repeat;
+  left: 26px; top: 110px;
+  width: 168px; height: 85px;
+}
+
+#room6 .note2 {
+  width: 33px; height: 29px;
+  left: 227px; top: 349px;
+}
+
+#sign_note2 {
+  background: url("//stash.rachelnabors.com/oz/room6/note2.png") 0 0 no-repeat;
+  left: 64px; top: 70px;
+  width: 505px; height: 397px;
+}
+
+#room6 .to-room3 {
+  left: 443px; top: 184px; 
+  transform: rotate(60deg);
+}
+
+#room6 .to-room7 {
+  left: 310px; top: 350px; 
+  transform: rotate(150deg);
+}
+
+/* Room 7 */
+
+#room7 { left: 181px; top: 849px; }
+
+.in-room7 #map { left: -181px; top: -849px;}
+
+#room7 .dolly {
+  background: url("//stash.rachelnabors.com/oz/room7/sprite_dolly.png") 0 0 no-repeat;
+  left: 177px; top: 134px;
+  width: 162px; height: 157px;
+}
+
+#room7 .note2 {
+  width: 33px; height: 25px;
+  left: 44px; top: 56px;
+}
+
+#room7 .stuffings {
+  width: 100px; height: 84px;
+  left: 171px; top: 296px;
+}
+
+#sign_stuffings { 
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?1") 0 -396px no-repeat;
+  left: 280px; top: 271px;
+  width: 275px; height: 98px;
+}
+
+#room7 .lantern, #room7 .lantern-glow { left: 477px;
+top: -41px;}
+
+#room7 .lantern-heads {left: 492px;top: -41px;}
+
+#room7 .flames {
+  background: url("//stash.rachelnabors.com/oz/room7/sprite_flame.png") 0 -0 no-repeat;
+  left: 441px; top: 305px;
+  width: 50px; height: 37px;
+  animation: flame-flicker .5s steps(3) infinite;
+}
+
+@keyframes flame-flicker {
+    0% { background-position: 0 0;}
+  100% {background-position: 0 -108px;}
+}
+
+#room7 .eyes {
+  background: url("//stash.rachelnabors.com/oz/room7/eyes.png") 0 -24px no-repeat;
+  left: 376px; top: 349px; 
+  width: 47px; height: 24px;
+  animation: plant-eyes-blink 2s steps(2) infinite alternate;
+}
+
+@keyframes plant-eyes-blink {
+  0% { background-position: 0 0;}
+  20% { background-position: 0 -48px; }
+}
+
+#room7 .palms {
+  background: url("//stash.rachelnabors.com/oz/room7/sprite_palms.png") 0 0 no-repeat;
+  top: 317px; left: 466px;
+  width: 63px; height: 42px;
+}
+
+#room7 .palms.activated { animation: palms-wave 1.5s steps(7) 1; }
+
+@keyframes palms-wave {
+  0% { background-position: 0 0;}
+  100% {background-position: 0 -294px;}
+}
+
+#room7 .to-secret-room1 {
+  width: 100px; height: 172px;
+  top: 55px; left: 550px;  
+}
+
+#room7 .to-room5 {
+  left: 529px; top: 234px;
+  transform: rotate(90deg);
+}
+
+#room7 .to-room6 {
+  left: 129px; top: 54px;
+  transform: rotate(330deg);
+}
+
+#room7 .to-room8 {
+  left: 150px; top: 370px;
+  transform: rotate(160deg);
+}
+
+/* Room 8 */
+
+#room8 { left: 314px; top: 1296px; }
+
+.in-room8 #map { left: -314px; top: -1296px;}
+
+.in-room8 #room8 {
+  background: url("//stash.rachelnabors.com/oz/room8/bg_waves.png") 0 231px no-repeat;
+  /* animation: waves-lapping 1s steps(2) infinite; */
+}
+
+@keyframes waves-lapping {
+  0% {background-position: 0 231px ;}
+  100% { background-position: 0 681px; }
+}
+
+#room8 .dolly {
+  background: url("//stash.rachelnabors.com/oz/room8/sprite_dolly.png") 0 0 no-repeat;
+  left: 218px; top: 42px;
+  width: 138px; height: 154px;
+}
+
+#room8 .auburngine {
+  width: 35px; height: 40px;
+  left: 405px; top: 141px;
+}
+
+#sign_auburngine { 
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?1") -127px -159px no-repeat;
+  left: 345px; top: 50px;
+  width: 148px; height: 78px;
+}
+
+#room8 .book1{
+  width: 171px; height: 134px;
+  left: 218px; top: 256px;
+}
+
+#sign_book1 { 
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?1") 0 -494px no-repeat;
+  left: 340px; top: 187px;
+  width: 252px; height: 107px;
+}
+
+#room8 .to-room7 {
+  left: 179px; top: 14px;
+  transform: rotate(310deg);
+}
+
+#room8 .to-room9 {
+  left: 400px; top: 40px;
+  transform: rotate(60deg);
+}
+
+/* Room 9 */
+
+#room9 { left: 672px; top: 1066px; }
+
+.in-room9 #map { left: -672px; top: -1066px;}
+
+#room9 .dolly {
+  background: url("//stash.rachelnabors.com/oz/room9/sprite_dolly.png") 0 0 no-repeat;
+  left: 250px; top: 77px;
+  width: 85px; height: 217px;
+}
+
+#room9 .auburngine2 {
+  width: 35px; height: 40px;
+  left: 46px; top: 370px;
+}
+
+#sign_auburngine2 { 
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?1") -127px -159px no-repeat;
+  left: 2px; top: 284px;
+  width: 148px; height: 78px;
+}
+
+#room9 .book2 {
+  width: 51px; height: 48px;
+  left: 112px; top: 191px;
+}
+
+#sign_book2 { 
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?1") 0 -601px no-repeat;
+  left: 61px; top: 252px;
+  width: 173px; height: 130px;
+}
+
+#room9 .painapple { left: 533px; top: 403px;}
+
+.in-room9 #sign_painapple { 
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?1") -127px -237px no-repeat;
+  left: 482px; top: 293px;
+  width: 132px; height: 75px;
+}
+
+#room9 .pool {
+  top: 124px; left: 311px;
+  width: 339px; height: 276px;
+}
+
+#room9 .pool-arm {
+  top: 156px; left: 271px;
+  width: 40px; height: 66px;
+}
+
+#secret_pool {
+  background: url("//stash.rachelnabors.com/oz/room9/pool.png") 0 0 no-repeat;
+  left: 158px; top: 16px;
+  width: 349px; height: 412px;
+}
+
+#room9 .to-room8 {
+  left: 129px; top: 280px;
+  transform: rotate(240deg);
+}
+
+#room9 .to-room5 {
+  left: 370px; top: 20px;
+}
+
+/* Room 10 */
+
+#room10 { left: 1041px; top: 1132px; }
+
+.in-room10 #map { left: -1041px; top: -1132px;}
+
+#room10 .dolly {
+  background: url("//stash.rachelnabors.com/oz/room10/sprite_dolly.png") 0 0 no-repeat;
+  left: 325px; top: 104px;
+  width: 169px; height: 144px;
+  animation: dolly-poke .5s steps(2) infinite;
+}
+
+@keyframes dolly-poke {
+  0%{background-position: 0 0;}
+  100%{background-position: 0 -288px;}
+}
+
+#room10 .musketmelon {
+  width: 51px; height: 48px;
+  left: 542px; top: 361px;
+}
+
+#sign_musketmelon { 
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?1") -121px 0 no-repeat;
+  left: 464px; top: 278px;
+  width: 154px; height: 79px;
+}
+
+#room10 .painapple { left: 162px; top: 336px; }
+
+.in-room10 #sign_painapple { 
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?1") -127px -237px no-repeat;
+  left: 123px; top: 253px;
+  width: 132px; height: 75px;
+}
+
+#room10 .pool {
+  top: 103px; left: 0;
+  width: 406px; height: 152px;
+}
+
+#room10 .pool-top {
+  top: 50px; left: 0;
+  width: 331px; height: 58px;
+}
+
+#room10 .pool-bottom {
+  top: 249px; left: 0;
+  width: 273px; height: 66px;
+}
+
+#room10 .to-room11 {
+  left: 365px; top: 350px;
+  transform: rotate(180deg);
+}
+
+#room10 .to-room12 {
+  left: 560px; top: 195px;
+  transform: rotate(100deg);
+}
+
+#room10 .to-room13 {
+  left: 550px; top: 25px;
+  transform: rotate(50deg);
+}
+
+/* Room 11 */
+
+#room11 { left: 866px; top: 1416px; }
+
+.in-room11 #map { left: -866px; top: -1416px;}
+
+#room11 .dolly {
+  background: url("//stash.rachelnabors.com/oz/room11/sprite_dolly.png") 0 0 no-repeat;
+  left: 296px; top: 200px;
+  width: 169px; height: 144px;
+  animation: dolly-kick .75s steps(2) infinite;
+}
+
+@keyframes dolly-kick {
+  0%{background-position: 0 0;}
+  100%{background-position: 0 -288px;}
+}
+
+#room11 .waterfall { 
+  background: url("//stash.rachelnabors.com/oz/room11/sprite_waterfall.png") 0 0 no-repeat;
+  top: 34px; left: 54px;
+  width:224px; height: 309px;
+  animation: waterfall-splash .75s steps(2) infinite;
+}
+
+@keyframes waterfall-splash {
+    0%{background-position: 0 0;}
+  100%{background-position: 0 -618px;}
+}
+
+#room11 .painapple { left: 339px; top: 53px; }
+
+#room11 .book3 { 
+  left: 421px;top: 201px;
+  width: 39px;height: 42px;
+}
+
+#room11 .beats { 
+  left: 480px; top: 330px;
+  width: 66px; height: 33px;
+}
+
+#sign_book3 {
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?1") 0 -812px no-repeat;
+  left: 296px; top: 32px;
+  width: 242px; height: 164px;
+}
+
+#sign_beats {
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?1") 0 -732px no-repeat;
+  left: 456px; top: 224px;
+  width: 147px; height: 81px;
+}
+
+.in-room11 #sign_painapple { 
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?1") -127px -86px no-repeat;
+  left: 413px; top: 39px;
+  width: 145px; height: 64px;
+}
+
+#room11 .to-room10 {
+  left: 540px; top: 90px;
+}
+
+/* Room 12 */
+
+#room12 { left: 1634px; top: 1318px; }
+
+.in-room12 #map { left: -1634px; top: -1318px;}
+
+#room12 .dolly {
+  background: url("//stash.rachelnabors.com/oz/room12/sprite_dolly.png") 0 0 no-repeat;
+  left: 226px; top: 110px;
+  width:152px; height: 163px;
+}
+
+#room12 .worm { 
+  background: url("//stash.rachelnabors.com/oz/room12/sprite_worm.png") 0 97px no-repeat;
+  left: 310px; top: 249px;
+  width:59px; height: 97px;
+}
+
+#room12 .worm.activated {  animation: wormy-wiggle 1s steps(14) 1; }
+
+@keyframes wormy-wiggle {
+    0%{background-position: 0 97;}
+  100%{background-position: 0 -1261px;}
+}
+
+#room12 .note3 { 
+  left: 171px; top: 176px;
+  width: 32px; height: 18px;
+}
+
+#room12 .octoberry { 
+  left: 175px; top: 109px;
+  width: 66px; height: 29px;
+}
+
+#sign_note3 {
+  background: url("//stash.rachelnabors.com/oz/room12/note3.png") 0 0 no-repeat;
+  left: 42px; top: 40px;
+  width: 568px; height: 364px;
+}
+
+#sign_octoberry {
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?1")  0 -976px  no-repeat;
+  left: 154px; top: 20px;
+  width: 135px; height: 88px;
+}
+
+#room12 .to-room10 {
+  left: 70px; top: 170px;
+  transform: rotate(270deg);
+}
+
+#room12 .to-room13 {
+  left: 269px; top: 15px;
+}
+
+/* Room 13 */
+
+#room13 { left: 1522px; top: 881px }
+
+.in-room13 #map { left: -1522px; top: -881px;}
+
+#room13 .dolly {
+  background: url("//stash.rachelnabors.com/oz/room13/sprite_dolly.png") 0 0 no-repeat;
+  left: 167px; top: 193px;
+  width:141px; height: 167px;
+  z-index: 3;
+}
+
+#room13 .moth {
+  background: url("//stash.rachelnabors.com/oz/room13/sprite_moth.png") 0 0 no-repeat;
+  left: 368px; top: 44px;
+  width: 32px; height: 31px;
+  z-index: 1;
+  animation: moth-flutter2 steps(2) .25s infinite alternate;
+}
+
+@keyframes moth-flutter2 {
+  100%{background-position: 0 -62px;}
+}
+
+#room13 .musstardy { 
+  left: 239px; top: 296px;
+  width: 95px; height: 39px;
+}
+
+#sign_musstardy {
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?4")  0 -1178px  no-repeat;
+  left: 260px; top: 206px;
+  width: 149px; height: 94px;
+}
+
+#room13 .book4 { 
+  left: 505px; top: 156px;
+  width: 54px; height: 37px;
+}
+
+#room13 .to-secret-room2 {
+  left: 212px; top: 122px;
+  width: 212px; height: 165px;
+}
+
+#secret-room2 {
+  background: url("//stash.rachelnabors.com/oz/room13/secret-room2.png");
+  position: absolute;
+  width: 631px; height: 450px;
+  left: 0; top: 0;
+}
+
+#secret-room2 .photo-doc {
+  width: 37px; height: 31px;
+  top: 150px; left: 283px;
+}
+
+#sign_photo-doc {
+  background: url("//stash.rachelnabors.com/oz/room13/photo2.png");
+  width: 318px; height: 232px;
+  top: 123px; left: 170px;
+}
+
+#room13 .lantern4 .lantern-heads { top: 0; left: 116px;}
+
+#room13 .lantern4 .lantern, #room13 .lantern4 .lantern-glow { top: -9px; left: 99px;}
+
+#room13 .to-room5 {
+  left: 50px; top: 250px;
+  transform: rotate(270deg);
+}
+
+#room13 .to-room12 {
+  left: 330px; top: 370px;
+  transform: rotate(150deg);
+}
+
+#room13 .to-room14 {
+  left: 579px; top: 360px;
+  transform: rotate(40deg);
+}
+
+/* Room 14 */
+
+#room14 { left: 1864px; top: 853px }
+
+.in-room14 #map { left: -1864px; top: -853px;}
+
+#room14 .dolly {
+  background: url("//stash.rachelnabors.com/oz/room14/sprite_dolly.png") 0 0 no-repeat;
+  left: 300px; top: 107px;
+  width:166px; height: 177px;
+}
+
+#room14 .marrowslim { 
+  left: 494px; top: 248px;
+  width: 46px; height: 46px;
+}
+
+#sign_marrowslim {
+  background: url("//stash.rachelnabors.com/oz/sprite_signs.png?4")  0 -1272px  no-repeat;
+  left: 457px; top: 311px;
+  width: 157px; height: 84px;
+}
+
+#room14 .book4 { 
+  left: 165px; top: 186px;
+  width: 54px; height: 37px;
+}
+
+#room14 .to-secret-room2 {
+  left: 0;top: 164px;
+  width: 91px; height: 165px;
+}
+
+#room14 .to-room4 {
+  left: 275px; top: 80px;
+  transform: rotate(323deg);
+}
+
+#room14 .to-room13 {
+  left: 268px; top: 370px;
+  transform: rotate(240deg);
+}
+
+/* Thank you for reading :) */
+.credits {
+  background: url("//stash.rachelnabors.com/oz/sprite_frame.png");
+  left: 50%; top: 40px; 
+  margin-left: -325px; margin-top: 450px;
+  position: absolute;
+  width: 650px; height: 214px;
+}
+
+.xamag {
+  background: url("//stash.rachelnabors.com/oz/sprite_frame.png?2");
+  position: absolute; left: 0; top: 0;
+  width: 217px; height: 155px;
+}
+
+.logo {
+  background: url("//stash.rachelnabors.com/oz/sprite_frame.png?2") -244px 0;
+  position: absolute; left: 244px; top: 0;
+  width: 168px; height: 214px;
+}
+
+.rtg {
+  background: url("//stash.rachelnabors.com/oz/sprite_frame.png?2") -412px 0;
+  position: absolute; left: 412px; top: 0;
+  width: 238px; height: 179px;
+}
+
+.best-by {
+  background: url("//stash.rachelnabors.com/oz/sprite_frame.png?2") 0 -214px;
+  left: 50%; top: 0; 
+  margin-left: -325px; 
+  position: absolute;
+  width: 650px; height: 40px;  
+  opacity: 0;
+  transition: opacity .5s ease-in-out 4s;
+}
+
+.next-page {
+  width: 90px;
+  height: 70px;
+  top: 140px;
+  left: 100px;
+}

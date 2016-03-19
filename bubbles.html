@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BUBBLES</title>
+    <style>
+        div{
+            position: absolute;
+            border-radius: 50%;
+        }
+        #left{
+            top: 10%;
+            left: 5%;
+            right: 40%;
+            width: 40%;
+            height: 80%;
+        }
+    </style>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            
+            var color_list = ["red","orange","yellow","green","blue","indigo","violet"];
+            var index = Math.floor(Math.random * color_list.length);
+            
+            var start = function() {
+                var left = $('#left');
+                left.css({'background': color_list[index]});
+            };
+            setInterval(start, 2000);
+        });
+    </script>
+</head>
+<body>
+    <div id="left"></div>
+    <div id="right"></div>
+</body>
+</html>

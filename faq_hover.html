@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background: #1b2d5e;
+            z-index: 999;
+        }
+        h1{
+            color: #ffffff;
+        }
+        main{
+            position: absolute;
+            top: 20%;
+            margin: 0 20%;
+            width: 60%;
+            background: #ffffff;
+        }
+        .question{
+            font-size: 1.4em;
+            cursor: pointer;
+            padding-left: 1%;
+        }
+        .answer{
+            font-size: 1.2em;
+            color: #646464;
+            padding-left: 5%;
+        }
+        footer{
+            position: fixed;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            text-align: center;
+            background: #1b2d5e;
+        }
+        footer>p, a{
+            color: #ffffff;
+        }
+        .faq{
+            padding: 0.5% 0.2%;
+            margin-bottom: 1%;
+            background: rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+        }
+    </style>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.answer').hide();
+            $('.question>img').attr({'src': 'images/open.png', 'alt': 'expand'});
+            $('.faq').hover(function() {
+                $(this).children('.answer').stop().slideDown(500);
+                $(this).find('img').attr({'src': 'images/close.png'});
+            }, function() {
+                $(this).children('.answer').stop().slideUp(500);
+                $(this).find('img').attr({'src': 'images/open.png'});
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>JAVASCRIPT &amp; JQUERY: THE MISSING MANUAL</h1>
+    </header>
+    <main>
+        <h2>A One Page FAQ</h2><hr>
+        <ul>
+            <li class="faq">
+                
+                <p class="question"><img> I've heard that JavaScript is the long-lost fountain of youth. Is this true?</p>
+                <p class="answer">Why, yes it is! Studies prove that learning JavaScript freshens the mind and extends life span by several hundred years. (Note: some scientists disagree with these claims)</p>
+                
+            </li>
+            <li class="faq">
+                
+                <p class="question"><img> Can JavaScript really solve all my problems?</p>
+                <p class="answer">Why, yes it can! It's the most versatile programming language ever created and is trained to provide financial management advice, life-saving CPR, and even to take care of household pets.</p>
+                
+            </li>
+            <li class="faq">
+                
+                <p class="question"><img> Is there nothing JavaScript <em>can't</em> do?</p>
+                <p class="answer">Why, no there isn't! It's even able to write its own public relations-oriented Frequently Asked Questions pages. Now that's one smart programming language!</p>
+                
+            </li>
+        </ul>
+    </main>
+    <footer>
+        <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="#">David MacFarland.</a> Published by <a href="#">O'Reilly Media, Inc.</a></p>
+    </footer>
+</body>
+</html>

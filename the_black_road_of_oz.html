@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/the_black_road_of_oz.css">
+</head>
+<body>
+    
+
+<div class="loading" id="load-state">
+<!-- Hi there! This awesome artwork came from this teenage artist: http://xamag.deviantart.com/
+
+I asked her if I could help take her flash comics into the native browser, and she consented :D 
+
+Let's hope I can get this done fast enough!
+
+(Also, she wanted to use Birthday Massacre's "Blue" for background music. But I think we can't just gank an MP3 like that. Going to have to think of an alternate plan, if time allows. Also, loading screen comes last.)
+-->
+<p class="ir best-by">
+  For full awesome, use Chrome. (There are some things other browsers just aren't ready for--yet.)
+</p>
+
+<div id="loader">
+  <div class="ir dolly"></div>
+</div>
+
+<div id="portal"><!--through which many things are learned.-->
+    <div id="opening">
+    <div class="scene" id="scene1">
+      <div class="cut"></div> 
+      <div class="setting">
+        <div class="ir dolly-flop"></div>
+        <div class="ir dolly-fling"></div>
+      </div>  
+    </div>
+    <div class="scene" id="scene2"></div>
+  </div>
+  
+  <!--findables shared by multiple rooms-->
+  <div id="sign_scraps" class="sign ir">someone tore this up...</div>
+  <div id="sign_potatoe" class="sign ir">potatoe</div>
+  <div id="sign_painapple" class="sign ir">painapple</div>
+  <div id="sign_note2" class="sign ir"></div>
+
+  <!-- Secret Rooms, come find us! -->
+  <div id="secret-room1" class="secret-room">
+    <div data-sign="sign_diary" class="ir diary readable clickable"></div>
+    <div id="sign_diary" class="sign ir"></div> 
+    <div data-sign="sign_photo-witches" class="ir photo-witches readable clickable"></div>
+    <div id="sign_photo-witches" class="sign ir"></div>
+    <a href="http://www.blackbrickroadofoz.com/index.php?id=14" class="ir next-page" target="_blank">Next page</a>
+  </div><!--/secret-room1-->
+  
+  <div id="secret_pool" class="secret-room ir"></div>
+  
+  <div class="pass-field" id="pass-gate1" data-passcode="Garden of Meats" data-access="secret-room2">
+    <div class="pass-wrap">
+      <label for="password">What's the secret password?</label>
+      <input type="text" id="password" /> <input type="submit" value="Try it..." />
+    </div>
+  </div>
+  <div id="secret-room2" class="secret-room">
+    <div data-sign="sign_photo-doc" class="ir photo-doc readable clickable"></div>
+    <div id="sign_photo-doc" class="sign ir"></div>
+  </div><!--/secret-room2-->
+
+  <!--the map-->
+  <div id="map">
+    <!-- interactive objects shared across the map-->
+    <div class="shared">
+      <div class="ir well clickable activatable"></div>
+      <div class="fountain ir activatable clickable"></div>
+      <label class="bulbs ir clickable switch-handler" for="toggle_bulbs">bulbs</label>
+      <input type="checkbox" class="switch" id="toggle_bulbs" />
+      <div class="bulbs off ir"></div>
+      <div class="bulbs-glow on ir"></div>
+      <div id="sign_book4" class="sign ir">&quot;Blue Meanies&quot; by S. Pepper</div>
+      
+      <div class="lantern5">
+        <label class="lantern-heads ir clickable switch-handler" for="toggle_lantern5">Lantern</label>
+        <input type="checkbox" class="switch" id="toggle_lantern5" />
+        <div class="lantern ir off"></div>
+        <div class="lantern-glow ir on"></div>      
+      </div>
+    </div> <!--/shared-->
+    
+    <!-- rooms -->    
+    <div class="stage initial" id="room1">
+      <div class="ir dolly-sitting">
+        <div class="dolly_eyes ir"></div>
+        <div class="dot-n-tot_eyes ir"></div>
+      </div>
+      <div class="dolly ir dolly-standing">
+        <div class="dolly_eyes ir"></div>
+        <div class="toothy_eyes ir"></div>
+      </div>
+      <div data-sign="sign_le-gume" class="ir readable clickable"></div>
+      <div id="sign_le-gume" class="sign ir">Le Gume</div>
+      <div class="mousey clickable activatable">
+        <div class="mouse ir"></div>      
+        <div class="mouse-hole"></div>      
+      </div>
+      
+      <label class="lanterns-heads ir clickable switch-handler" for="toggle_lanterns1">Lanterns</label>
+      <input type="checkbox" class="switch" id="toggle_lanterns1" />
+      <div class="lantern ir off"></div>
+      <div class="lantern-glow ir on"></div>
+      
+      <nav>
+        <div class="ir clickable arrow to-room2" data-destination="room2">Path 1</div>
+        <div class="ir clickable arrow to-room4" data-destination="room4">Path 2</div>
+      </nav>
+    </div>
+    <div class="stage" id="room2">
+      <div class="dolly ir">
+        <div class="dolly_eyes ir"></div>
+        <div class="toothy_eyes ir"></div>
+      </div>
+      <div class="ir blood"></div>
+      <div data-sign="sign_scraps" class="ir scraps readable clickable"></div>
+      <div data-sign="sign_album" class="ir album readable clickable"></div>
+      <div id="sign_album" class="sign ir">It looks like an album...</div>
+      <nav>
+        <div class="ir clickable arrow to-room1" data-destination="room1">Path 1</div>
+        <div class="ir clickable arrow to-room3" data-destination="room3">Path 2</div>
+        <div class="ir clickable arrow to-room5" data-destination="room5">Path 3</div>
+      </nav>      
+    </div>
+    <div class="stage" id="room3">
+      <div class="dolly ir">
+        <div class="dolly_eyes ir"></div>
+      </div>
+      <div class="toothy ir"></div>
+      <div data-sign="sign_potatoe" class="ir potatoe readable clickable"></div>
+      <div data-sign="sign_recipe-scrap1" class="ir recipe-scrap1 readable clickable"></div>
+      <div id="sign_recipe-scrap1" class="sign ir">Potatoe</div>
+      <nav>
+        <div class="ir clickable arrow to-room2" data-destination="room2">Path 1</div>
+        <div class="ir clickable arrow to-room6" data-destination="room6">Path 2</div>
+      </nav>      
+    </div>
+    <div class="stage" id="room4">
+      <div class="dolly ir">
+        <div class="dolly_eyes ir"></div>
+      </div>
+      <div data-sign="sign_note" class="ir note readable clickable"></div>
+      <div id="sign_note" class="sign ir">Potatoe</div>
+      <div class="pumpkin ir"></div>
+      <nav>
+        <div class="ir clickable arrow to-room1" data-destination="room1">Path 1</div>
+        <div class="ir clickable arrow to-room14" data-destination="room14">Path 2</div>
+      </nav>      
+    </div>
+
+    <div class="stage" id="room5">
+      <div class="dolly ir">
+        <div class="dolly_eyes ir"></div>
+      </div>
+      <div data-sign="sign_scraps" class="ir scraps readable clickable"></div>
+      <label class="lantern-heads ir clickable switch-handler" for="toggle_lantern2">Lantern</label>
+      <input type="checkbox" class="switch" id="toggle_lantern2" />
+      <div class="lantern ir off"></div>
+      <div class="lantern-glow on ir"></div>
+      
+      <div class="moth ir"></div>
+      
+      <div data-sign="sign_cucu" class="ir cucu readable clickable"></div>
+      <div id="sign_cucu" class="sign ir"></div>
+            
+      <nav>
+        <div class="ir clickable arrow to-room2" data-destination="room2">Path 1</div>
+        <div class="ir clickable arrow to-room13" data-destination="room13">Path 2</div>
+        <div class="ir clickable secret to-secret-room1" data-secret="secret-room1">Door 1</div>
+        <div class="ir clickable arrow to-room7" data-destination="room7">Path 4</div>
+      </nav>      
+    </div>
+
+    <div class="stage" id="room6">
+      <div class="dolly ir">
+        <div class="dolly_eyes ir"></div>
+        <div class="toothy_eyes ir"></div>
+      </div>
+
+      <div data-sign="sign_note2" class="ir note2 readable clickable"></div>
+
+      <div data-sign="sign_moonflower" class="ir moonflower readable clickable"></div>
+      <div id="sign_moonflower" class="sign ir">moonflower</div>
+      
+      <div data-sign="sign_potatoe" class="ir potatoe readable clickable"></div>
+
+      <nav>
+        <div class="ir clickable arrow to-room3" data-destination="room3">Path 1</div>
+        <div class="ir clickable arrow to-room7" data-destination="room7">Path 2</div>
+      </nav>
+    </div>
+    
+    <div class="stage" id="room7">
+      <div class="dolly ir">
+        <div class="dolly_eyes ir"></div>
+        <div class="toothy_eyes ir"></div>
+      </div>
+
+      <div data-sign="sign_stuffings" class="ir stuffings readable clickable"></div>
+      <div id="sign_stuffings" class="sign ir">tasty meal stuffings for nasty lil' muffins</div>
+
+      <div data-sign="sign_note2" class="ir note2 readable clickable"></div>
+      
+      <div class="flames ir"></div>
+      <div class="eyes ir"></div>
+      <div class="palms clickable activatable ir"></div>
+
+      <label class="lantern-heads ir clickable switch-handler" for="toggle_lantern3">Lantern</label>
+      <input type="checkbox" class="switch" id="toggle_lantern3" />
+      <div class="lantern ir off"></div>
+      <div class="lantern-glow ir on"></div>
+      
+      <nav>
+        <div class="ir clickable arrow to-room6" data-destination="room6">Path 1</div>
+        <div class="ir clickable arrow to-room5" data-destination="room5">Path 2</div>
+        <div class="ir clickable arrow to-room8" data-destination="room8">Path 3</div>
+        <div class="ir clickable secret to-secret-room1" data-secret="secret-room1">Door 1</div>
+      </nav>
+    </div>
+
+    <div class="stage" id="room8">
+      <div class="dolly ir">
+        <div class="dolly_eyes ir"></div>
+        <div class="toothy_eyes ir"></div>
+      </div>
+
+      <div data-sign="sign_auburngine" class="ir auburngine readable clickable"></div>
+      <div id="sign_auburngine" class="sign ir">auburngine</div>
+
+      <div data-sign="sign_book1" class="ir book1 readable clickable"></div>
+      <div id="sign_book1" class="sign ir">&quot;Axing the Elders&quot; by R. Raskolnikoff</div>
+      
+      <nav>
+        <div class="ir clickable arrow to-room7" data-destination="room7">Path 1</div>
+        <div class="ir clickable arrow to-room9" data-destination="room9">Path 2</div>
+      </nav>
+    </div>    
+
+    <div class="stage" id="room9">
+      <div class="dolly ir">
+        <div class="dolly_eyes ir"></div>
+        <div class="toothy_eyes ir"></div>
+      </div>
+
+      <div data-sign="sign_auburngine2" class="ir auburngine2 readable clickable"></div>
+      <div id="sign_auburngine2" class="sign ir">auburngine</div>
+
+      <div data-sign="sign_painapple" class="ir painapple readable clickable"></div>
+      
+      <div data-sign="sign_book2" class="ir book2 readable clickable"></div>
+      <div id="sign_book2" class="sign ir">&quot;Thy Lights&quot; by S. Mayor</div>
+      
+      <div data-secret="secret_pool" class="ir pool clickable secret"></div>
+      <div data-secret="secret_pool" class="ir pool-arm clickable secret"></div>
+      
+      <nav>
+        <div class="ir clickable arrow to-room8" data-destination="room8">Path 1</div>
+        <div class="ir clickable arrow to-room5" data-destination="room5">Path 2</div>
+      </nav>
+    </div>    
+
+    <div class="stage" id="room10">
+      <div class="dolly ir">
+        <div class="dolly_eyes ir"></div>
+        <div class="toothy_eyes ir"></div>
+      </div>
+
+      <div data-sign="sign_musketmelon" class="ir musketmelon readable clickable"></div>
+      <div id="sign_musketmelon" class="sign ir">musketmelon</div>
+
+      <div data-sign="sign_painapple" class="ir painapple readable clickable"></div>
+      
+      <div data-secret="secret_pool" class="ir pool-top clickable secret"></div>
+      <div data-secret="secret_pool" class="ir pool clickable secret"></div>
+      <div data-secret="secret_pool" class="ir pool-bottom clickable secret"></div>
+      
+      <nav>
+        <div class="ir clickable arrow to-room11" data-destination="room11">Path 1</div>
+        <div class="ir clickable arrow to-room12" data-destination="room12">Path 2</div>
+        <div class="ir clickable arrow to-room13" data-destination="room13">Path 3</div>
+      </nav>
+    </div>    
+
+    <div class="stage" id="room11">
+      <div class="dolly ir">
+        <div class="dolly_eyes ir"></div>
+        <div class="toothy_eyes ir"></div>
+      </div>
+
+      <div data-sign="sign_book3" class="ir book3 readable clickable"></div>
+      <div id="sign_book3" class="sign ir">&quot;Giant Knives and Baked Dogs&quot; by P. Head</div>
+
+      <div data-sign="sign_beats" class="ir beats readable clickable"></div>
+      <div id="sign_beats" class="sign ir">sugar beats</div>
+      
+      <div data-sign="sign_painapple" class="ir painapple readable clickable"></div>
+      
+      <div class="ir waterfall"></div>
+      
+      <nav>
+        <div class="ir clickable arrow to-room10" data-destination="room10">Path 1</div>
+      </nav>
+    </div>    
+
+    <div class="stage" id="room12">
+      <div class="dolly ir">
+        <div class="dolly_eyes ir"></div>
+        <div class="toothy_eyes ir"></div>
+      </div>
+
+      <div data-sign="sign_note3" class="ir note3 readable clickable"></div>
+      <div id="sign_note3" class="sign ir">
+        BLACK TONGUES SPEAK FASTER 
+        THAN A CAR CRASH. 
+        YOU SUPPLY THE RUMOURS 
+        AND I'LL SUPPLY THE WRATH. 
+        ROMANCH IS BREAKING 
+        EVERY HEART IN TWO, 
+        CASTING SHADOWS 
+        IN A PALE SHADE OF BLUE.
+      </div>
+
+      <div data-sign="sign_octoberry" class="ir octoberry readable clickable"></div>
+      <div id="sign_octoberry" class="sign ir">octoberry</div>
+      
+      <div class="ir worm clickable activatable"></div>
+      
+      <nav>
+        <div class="ir clickable arrow to-room10" data-destination="room10">Path 1</div>
+        <div class="ir clickable arrow to-room13" data-destination="room13">Path 2</div>
+      </nav>
+    </div>
+    
+    <div class="stage" id="room13">
+      <div class="dolly ir">
+        <div class="dolly_eyes ir"></div>
+        <div class="toothy_eyes ir"></div>
+      </div>
+      
+      <div class="ir moth"></div>
+      
+      <div class="lantern4">
+        <label class="lantern-heads ir clickable switch-handler" for="toggle_lantern4">Lantern</label>
+        <input type="checkbox" class="switch" id="toggle_lantern4" />
+        <div class="lantern ir off"></div>
+        <div class="lantern-glow ir on"></div>      
+      </div>
+      
+      <div data-sign="sign_book4" class="ir book4 readable clickable"></div>
+
+      <div data-sign="sign_musstardy" class="ir musstardy readable clickable"></div>
+      <div id="sign_musstardy" class="sign ir">musstardy</div>
+      
+      <nav>
+        <div class="ir clickable arrow to-room5" data-destination="room5">Path 1</div>
+        <div class="ir clickable arrow to-room12" data-destination="room12">Path 2</div>
+        <div class="ir clickable arrow to-room14" data-destination="room14">Path 3</div>
+        <div class="ir clickable passkey to-secret-room2" data-pass="pass-gate1">Door 2</div>
+      </nav>
+    </div>
+
+    <div class="stage initial" id="room14">
+      <div class="dolly ir">
+        <div class="dolly_eyes ir"></div>
+        <div class="toothy_eyes ir"></div>
+      </div>
+      
+      <div data-sign="sign_book4" class="ir book4 readable clickable"></div>
+
+      <div data-sign="sign_marrowslim" class="ir marrowslim readable clickable"></div>
+      <div id="sign_marrowslim" class="sign ir">musstardy</div>
+      
+      <nav>
+        <div class="ir clickable arrow to-room4" data-destination="room4">Path 1</div>
+        <div class="ir clickable arrow to-room13" data-destination="room13">Path 2</div>
+        <div class="ir clickable passkey to-secret-room2" data-pass="pass-gate1">Door 2</div>
+      </nav>
+    </div>
+
+  </div>
+</div>
+<div class="credits">
+  <a href="http://www.blackbrickroadofoz.com/" class="xamag ir" target="blank">
+    art, idea &amp; story by Xamag
+  </a>
+  
+  <a class="logo ir" href="http://www.blackbrickroadofoz.com/index.php?id=14" target="blank">
+    The Black Brick Road of O.Z. #11 (read the rest)
+  </a>
+  
+  <a href="http://rachelnabors.com/" class="rtg ir" target="blank">
+    CSS, HTML &amp; JavaScript by Rachel <del>the Great</del> Nabors
+  </a>
+</div>
+</div>
+
+
+</body>
+</html>

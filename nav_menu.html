@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navigation Menu</title>
+    <style>
+        header{}
+        .hasSubmenu>a::after{
+            content: "+"
+        }
+        h1{
+            font-family: monospace;
+            color: #646464;
+            border-bottom: 1px solid #aaa;
+        }
+        nav{
+            height: 40px;
+            border: 1px solid #aaa;
+            box-shadow: 0 0 5px 0 #bbb;
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            display: inline-block;
+            margin: 0 -2px;
+            padding: 0;
+        }
+        .submenu>li{
+            display: block;
+            margin: 0;
+        }
+        a{
+            display: block;
+            margin: 0;
+            padding: 11px 20px;
+            height: 18px;
+            color: #646464;
+            text-decoration: none;
+            border-left: 1px solid #eee;
+        }
+        .submenu a{
+            border-bottom: 1px solid #eee;
+        }
+        a:hover{
+            background: #bbb;
+        }
+        .submenu{
+            display: none;
+            position: absolute;
+            box-shadow: inset 0 0 5px #bbb;
+        }
+        .hasSubmenu:hover .dropdown{
+            display: block;
+        }
+    </style>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('hasSubmenu').hover(function() {
+                var slideRight = $(this).children('ul').first();
+                if (slideRight.is('.slideRight')) {
+                    slideRight.animate({
+                        top: '-40px',
+                        left: '150px'}, 500)
+                }
+            }, function() {});
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Navigation Menu</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li class="hasSubmenu"><a href="#">About Us </a>
+                    <ul class="submenu dropdown">
+                        <li><a href="#">Our History</a></li>
+                        <li><a href="#">Driving Directions</a></li>
+                        <li><a href="#">Hours</a></li>
+                    </ul>
+                </li>
+                <li class="hasSubmenu"><a href="#">Our Products </a>
+                    <ul class="submenu dropdown">
+                        <li class="hasSubmenu"><a href="#">Gizmos </a>
+                            <ul class="submenu slideRight">
+                                <li><a href="#">Gizmo Basic</a></li>
+                                <li><a href="#">Gizmo Standard</a></li>
+                                <li><a href="#">Gizmo Supreme</a></li>
+                            </ul>
+                        </li>
+                        <li class="hasSubmenu"><a href="#">Gadgets </a>
+                            <ul class="submenu slideRight">
+                                <li><a href="#">Gadget Basic</a></li>
+                                <li><a href="#">Gadget Standard</a></li>
+                                <li class="hasSubmenu"><a href="#">Gadget Supreme</a>
+                                    <ul class="submenu slideRight">
+                                        <li><a href="#">Gadget Supreme A</a></li>
+                                        <li><a href="#">Gadget Supreme B</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Time Machines</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

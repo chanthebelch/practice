@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>float</title>
+    <style>
+        #sweden {
+            width: 300px;
+            padding: 10px 0;
+            border: 2px solid #C8Cdd2;
+        }
+        dl {
+            margin: 10px 20px;
+            padding: 0;
+        }
+        dt {
+            width: 180px;
+            margin: 0;
+            padding: 0;
+            font-size: 130%;
+            letter-spacing: 1px;
+            color: #627081;
+        }
+        dd {
+            margin: 0;
+            padding: 0;
+            font-size: 85%;
+            line-height: 1.5em;
+            color: #666;
+        }
+        img {
+            float: left;
+        }
+/*
+        dl:nth-child(odd)>dd:first-of-type {
+            float: right;
+        }
+        dl:nth-child(even)>dd:first-of-type {
+            float: left;
+        }
+*/
+        dd>img {
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div id="sweden">
+        <dl>
+            <dt>Stockholm</dt>
+            <dd>
+                <img src="images/PastureCattle.jpg" alt="Gamla Stan">
+                <dd>This was taken in Gamla Stan (Old Town) in a large square of amazing buildings.</dd>
+            </dd>
+        </dl>
+        <dl>
+            <dt>Gamla Uppsala</dt>
+            <dd>
+                <img src="images/animal-farm-childrens-book-4-638.jpg" alt="Gamla Uppsala">
+                <dd>The first three Swedish kings are buried here, under ancient burial mounds.</dd>
+            </dd>
+        </dl>
+        <dl>
+            <dt>Perpetual Sun</dt>
+            <dd>
+                <img src="images/animal-farm.jpg" alt="Wristwatch">
+                <dd>During the summer months, the sun takes forever to go down. This is a good thing.</dd>
+            </dd>
+        </dl>
+    </div>
+</body>
+</html>

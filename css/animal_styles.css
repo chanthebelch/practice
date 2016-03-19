@@ -1,0 +1,59 @@
+body{
+    
+    text-align: center;
+}
+
+.jumbotron{
+    text-align: center;
+    background: lightgreen;
+    font-size: 150%;
+    color: white;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+h1{
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+#tohide{
+    display: inline-block;
+    background: lightgreen;
+    text-transform: lowercase;
+    text-align: center;
+    font-size: 150%;
+    text-shadow: 0px 0px 10px white;
+    color: white;
+}
+
+#table{
+    background: url('../images/Cattle.jpg')
+    
+}
+
+#help{
+    float: left;
+    z-index: 10000;
+    margin-bottom: -50px;
+}
+/*
+main ul{
+    list-style: outside none none;
+    position: relative;
+}
+
+main li{
+    display: inline-block;
+    font-size: 500%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+#slde1 {
+    background: lightgreen url(../images/Cattle.jpg) 100%;
+}
+*/

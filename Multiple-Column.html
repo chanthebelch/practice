@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiple-Column</title>
+    <style>
+        nav>ul {
+            float:left;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            box-sizing: border-box;
+            width: 100%;
+            min-width: 900px;
+        }
+        nav>ul>li {
+            float: left;
+            border-left: 1px dotted #fff;
+        }
+        nav>ul>li:first-child {
+            border: none;
+            margin-left: 100px;
+        }
+        nav>ul>li>a {
+            float: left;
+            display: block;
+            padding: 8px;
+            color: #fff;
+            text-decoration: none;
+        }
+        nav>ul>li>a:hover {
+            transform: rotate(-10deg)
+        }
+        .bannerbg {
+            clear: both;
+            min-width: 900px;
+            height: 100px;
+            text-align: center;
+            background-color: #01002e;
+            background-image: -webkit-linear-gradient(left, #01002e, #622a53)
+        }
+        .bannerbg>span {
+            color: #fff;
+            font-size: 300%;
+            line-height: 100px;
+        }
+        main{
+            margin: 0;
+            padding: 0;
+            min-width: 900px;
+        }
+        .left {
+            float: left;
+            width: 20%;
+            min-width: 180px;
+        }
+        .right {
+            float: right;
+            width: 20%;
+            min-width: 180px;
+        }
+        article {
+            width: 60%;
+            min-width: 540px;
+            margin: 0 20% 0 20%;
+            box-sizing: border-box;
+            padding: 0 1%;
+        }
+        footer {
+            clear: both;
+            margin-top: 100px;
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="">About The Book</a></li>
+                <li><a href="">CSS Properties</a></li>
+                <li><a href="">CSS Tips</a></li>
+                <li><a href="">CSS Gotohas</a></li>
+                <li><a href="">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="bannerbg"><span>CSS3:THE MISSING MANUAL</span></div>
+    </header>
+    <main>
+        <aside class="left">
+            <h1>Sidebar 1</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis id facere cum libero sequi sapiente veniam quidem ducimus atque natus labore sit, impedit saepe unde!</p>
+            <h2>Secondary Header</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, voluptatibus, asperiores! Ex, quos.</p>
+            <h2>Secondary Header</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum repellendus, veritatis vero?</p>
+        </aside>
+        <aside class="right">
+            <h1>Sidebar 2</h1>
+            <ul>
+                <li>Amet natus nobis</li>
+                <li>Magnam sequi officia</li>
+                <li>Excepturi officiis</li>
+                <li>Amet natus nobis</li>
+                <li>Magnam sequi officia</li>
+                <li>Excepturi officiis</li>
+            </ul>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti quaerat sapiente molestiae quibusdam, nemo, voluptas reiciendis, delectus ipsa laudantium itaque ratione harum, cupiditate pariatur tenetur beatae.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos earum, dolorum quia repellendus qui magni quos nam laudantium nobis placeat in nihil mollitia perferendis temporibus sapiente autem! Non quasi quibusdam odit veritatis, amet sapiente illo!</p>
+        </aside>
+        <article>
+            <h1>Article Title</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat eum possimus cum impedit fugit. Incidunt placeat ipsa sit explicabo error nostrum iure iusto harum sunt! Quasi accusantium pariatur rerum, eum tenetur nobis esse. Magnam sequi officia inventore necessitatibus obcaecati blanditiis modi dignissimos maiores ad autem, alias impedit exercitationem similique qui!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi officiis praesentium nihil voluptatem accusantium facilis quisquam aperiam adipisci repellat tempore.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error adipisci neque sed nemo doloribus voluptas veniam quod officiis optio voluptate consequuntur animi, tempore inventore quisquam vitae! Nostrum iure esse sed accusamus nemo eveniet hic enim. Voluptatum mollitia consequatur nobis eum.</p>
+            <h2>Subheading</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, facere quis dolore quod neque consequatur soluta. Voluptas quod cupiditate praesentium maxime doloribus quo voluptate aut nemo velit error voluptatum quasi sunt, obcaecati facilis facere autem quam. Ratione iure nihil vitae provident possimus dolorem fugiat corrupti rem nulla esse, perspiciatis, tempora!</p>
+            <h2>Subheading</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquam, molestiae architecto nihil nobis tempore quibusdam cupiditate, eius tempora modi dolore veritatis quasi fugit voluptatum in dolor atque quis iusto nisi saepe ipsam excepturi perspiciatis? Ducimus odit perferendis accusantium cumque tempora, iure saepe aliquid similique dolore aspernatur fuga, ratione ipsum! Amet natus nobis atque inventore placeat sint explicabo, magni quo recusandae maxime dolor reprehenderit, totam cupiditate? Reprehenderit amet nemo ducimus dicta sequi. Aliquam officia porro velit in ut similique autem laudantium eaque cumque esse doloribus magni, fuga. Ad commodi harum, iure omnis, odio, tempore ut, sed vero incidunt doloremque necessitatibus!</p>
+        </article>
+    </main>
+    <footer>
+        <p>Copyright 2013, Greek Text Generator, Inc. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur rem quas, atque, temporibus, impedit commodi nihil perspiciatis ad deleniti aspernatur maiores facilis quaerat repudiandae et alias eius veniam, debitis sit?</p>
+        <email>e-mail@here.com</email>
+    </footer>
+</body>
+</html>

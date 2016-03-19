@@ -1,0 +1,196 @@
+/*card layout*/
+
+.card {
+    width: 200px;
+    height: 300px;
+    box-sizing: padding-box;
+    border: 1px solid #646464;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px #646464;
+}
+
+.topleft, .btmright {
+    width: 40px;
+    height: 300px;
+    border-radius: 15px;
+}
+
+.topleft {
+    float: left;
+}
+
+.btmright {
+    float: right;
+    transform: rotate(180deg);
+}
+
+.n, .suit {
+    text-align: center;
+}
+
+.n {
+    height: 25px;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 25px;
+    border-radius: 15px;
+}
+
+.suit {
+    height: 30px;
+    font-size: 30px;
+    line-height: 25px;
+}
+
+.middle {
+    height: 300px;
+    margin: 0 40px;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.middle>div {
+    float: left;
+    width: 40px;
+    height: 260px;
+}
+
+
+/*suits*/
+
+.diamond, .heart {
+    color: red;
+}
+
+.club, .spade {
+    color: black;
+}
+
+.diamond .suit::after, .diamond .v::after {
+    content: "\2666";
+}
+
+.club .suit::after, .club .v::after {
+    content: "\2663";
+}
+
+.heart .suit::after, .heart .v::after {
+    content: "\2665";
+}
+
+.spade .suit::after, .spade .v::after {
+    content: "\2660";
+}
+/*names*/
+
+.ace .n::after {
+    content: "A";
+}
+
+.two .n::after {
+    content: "2";
+}
+
+.three .n::after {
+    content: "3";
+}
+
+.four .n::after {
+    content: "4";
+}
+
+.five .n::after {
+    content: "5";
+}
+
+.six .n::after {
+    content: "6";
+}
+
+.seven .n::after {
+    content: "7";
+}
+
+.eight .n::after {
+    content: "8";
+}
+
+.nine .n::after {
+    content: "9";
+}
+
+.ten .n::after {
+    content: "10";
+}
+
+.jack .n::after {
+    content: "J";
+}
+
+
+.queen .n::after {
+    content: "Q";
+}
+
+.king .n::after {
+    content: "K";
+}
+
+/*layout styles for .middle>div:first-child*/
+/*layoutA is similar to the middle left part of 4, 5, 6, 7, 8*/
+/*layoutB is similar to the middle left part of 9, 10*/
+
+.layoutA>div {
+    height: 52px;  /* (300-20*2)/5 */
+    box-sizing: border-box;
+    padding: 6px 0;
+    line-height: 40px;
+    font-size: 52px;
+    text-align: center;
+}
+
+.layoutA>div:last-child {
+    transform: rotate(180deg);
+}
+
+.layoutB>div {
+    height: 65px;  /* (300-20*2)/4 */
+    box-sizing: border-box;
+    padding: 12.5px 0;
+    line-height: 40px;
+    font-size: 52px;
+    text-align: center;
+}
+
+.layoutB>div:last-child {
+    display: none;
+}
+
+.layoutB>div:nth-child(3), .layoutB>div:nth-child(4) {
+    transform: rotate(180deg);
+}
+
+
+/*layout styles for .middle>div:nth-child(2)*/
+/*layout1 is similar to the middle part of Ace, 3, 5, 7, 9*/
+/*layout2 is similar to the middle part of 8*/
+/*layout3 is similar to the middle part of 10*/
+.layout1>div, .layout2>div {
+    height: 52px;  /* (300-20*2)/5 */
+    box-sizing: border-box;
+    padding: 6px 0;
+    line-height: 40px;
+    font-size: 52px;
+    text-align: center;
+}
+
+.layout2>div:nth-child(4) {
+    transform: rotate(180deg);
+}
+/*layout3 is still in beta*/
+.layout3>div:nth-child(4) {
+    transform: rotate(180deg);
+}
+
+
+

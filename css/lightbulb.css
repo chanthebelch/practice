@@ -1,0 +1,25 @@
+#binary-number {
+    
+}
+
+#binary-number div p{
+    margin: 0 50px;
+    font-family: monospace;
+    font-size: 8em;    
+}
+
+.lightbulb{
+    width: 50px;
+    height: 50px;
+    margin: 0 50px;
+/*    border: 1px solid black;*/
+    border-radius: 50%;
+}
+
+#displayer>input{
+    text-align: right;
+}
+
+.row {
+    margin-top: 20px;
+}

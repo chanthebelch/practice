@@ -1,0 +1,47 @@
+body{
+
+}
+
+#desk{
+    width: 800px;
+    height: 450px;
+    position: absolute;
+    left: 50%;
+    margin-left: -400px;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.cardContainer{
+    width: 20%;
+    height: 50%;
+    border: 2px solid #999999;
+    border-radius: 5px;
+    margin: 80px 10px;
+    display: inline-block;
+    background: #cccccc;
+}
+
+.card{
+    font-family: monospace;
+    font-size: 8em;
+    margin: 50px 0;
+}
+
+#control{
+    position: absolute;
+    top: 500px;
+    left: 50%;
+    width: 160;
+    height: 90px;
+    margin-left: -80px;
+}
+
+button{
+    display: inline-block;
+    width: 80px;
+    height: 45px;
+    font-size: 1.5em;
+    font-weight: bold;
+}

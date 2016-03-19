@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Reponsive Navigation Menu</title>
+<style>
+    header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #1b2d5e;
+        color: #fff;
+    }
+    footer{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #1b2d5e;
+        color: #fff;
+    }
+    footer a{
+        color: #fff;
+    }
+    .content{
+        margin-top: 160px;
+    }
+    h2{
+        border-bottom: 1px solid #aaa;
+        color: #646464;
+    }
+    nav{
+        height: 40px;
+        border: 1px solid #aaa;
+        box-shadow: 0 0 5px #ccc;
+        position: relative;
+    }
+    nav ul{
+        list-style: none;
+        margin: 0 0;
+        padding: 0 0;
+    }
+    li{
+        display: inline-block;
+        margin: 0 -2px;
+        padding: 0 0;
+    }
+    li a{
+        text-decoration: none;
+        color: #646464;
+        display: inline-block;
+        height: 18px;
+        margin: 0 0;
+        padding: 11px 20px;
+        border-left: 1px solid #eee;
+    }
+    li a:hover{
+        background: #ccc;
+    }
+    .hasSubmenu>a:after{
+        content: "+";
+    }
+    .submenu{
+        border: 1px solid #aaa;
+        box-shadow: 0 0 5px #ccc;
+        position: absolute;  /* very important! */
+    }
+    .submenu li, .submenu a{
+        display: block;
+        background: #fff;
+    }
+    .submenu a{
+        margin-bottom: -1px;
+        border: 1px solid #eee;
+    }
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.submenu').hide();
+    
+    $('.hasSubmenu').hover(function() {
+        var submenu = $(this).find('.submenu').first();
+        if (submenu.is('.dropdown')) {
+            submenu.stop().slideDown();
+        }
+        else{
+            $(this).css({'color': 'red'});
+            submenu.animate({
+                top: '-=40px',
+                left: '+=200px'
+            }, 500);
+        }
+    }, function() {
+        var submenu = $(this).children('.submenu').first();
+        submenu.slideUp();
+    });
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <h1>JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL</h1>
+    </header>
+    <div class="content">
+        <h2>Navigation Menu</h2>
+        <nav class="main">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li class="hasSubmenu"><a href="#">About Us </a>
+                    <ul class="submenu dropdown">
+                        <li><a href="#">Our History</a></li>
+                        <li><a href="#">Driving Directions</a></li>
+                        <li><a href="#">Hours</a></li>
+                    </ul>
+                </li>
+                <li class="hasSubmenu"><a href="#">Our Products </a>
+                    <ul class="submenu dropdown">
+                        <li class="hasSubmenu"><a href="#">Gizmos </a>
+                            <ul class="submenu slideRight">
+                                <li><a href="#">Gizmo Basic</a></li>
+                                <li><a href="#">Gizmo Standard</a></li>
+                                <li><a href="#">Gizmo Supreme</a></li>
+                            </ul>
+                        </li>
+                        <li class="hasSubmenu"><a href="#">Gadgets </a>
+                            <ul class="submenu slideRight">
+                                <li><a href="#">Gadget Basic</a></li>
+                                <li><a href="#">Gadget Standard</a></li>
+                                <li class="hasSubmenu"><a href="#">Gadget Supreme</a>
+                                    <ul class="submenu slideRight">
+                                        <li><a href="#">Gadget Supreme A</a></li>
+                                        <li><a href="#">Gadget Supreme B</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Time Machines</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <p style="clear:both;margin-top: 200px;" >Example of a responsive navigation menu using jQuery and Vasil Dinkov's <a href="http://www.smartmenus.org">SmartMenus Plugin</a>.</p>
+    
+    </div>
+<footer>
+    <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</footer>
+</div>
+</body>
+</html>

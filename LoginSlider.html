@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LoginSlider</title>
+    <style>
+        #loginSlider{
+            position: fixed;
+            top: 5%;
+            right: 5%;
+            background: #192b5f;
+            padding: 10px 20px;
+            border-radius: 0 0 5px 5px;
+            color: #ffffff;
+            text-align: right;
+        }
+        input{
+            margin: 10px 0;
+        }
+        .toClapse{
+            content: url(images/close.png);
+        }
+        .expanded{
+/*            background: #c8c8c8;*/
+            border-radius: 0 0 5px 5px;
+        }
+    </style>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#login').hide();
+            $('#slider').click(function() {
+                $('#login').slideToggle(500);
+                $('#slider').toggleClass('expanded');
+                $('#slider>img').toggleClass('toClapse');
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="loginSlider">
+        <div id="slider"><img src="images/open.png" alt="expand"> Login</div>
+        <form action="" id="login">
+            <label for="username">Username: </label>
+            <input type="text" name="username" id="username"><br>
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
