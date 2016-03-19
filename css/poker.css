@@ -81,60 +81,7 @@
 .spade .suit::after, .spade .v::after {
     content: "\2660";
 }
-/*names*/
 
-.ace .n::after {
-    content: "A";
-}
-
-.two .n::after {
-    content: "2";
-}
-
-.three .n::after {
-    content: "3";
-}
-
-.four .n::after {
-    content: "4";
-}
-
-.five .n::after {
-    content: "5";
-}
-
-.six .n::after {
-    content: "6";
-}
-
-.seven .n::after {
-    content: "7";
-}
-
-.eight .n::after {
-    content: "8";
-}
-
-.nine .n::after {
-    content: "9";
-}
-
-.ten .n::after {
-    content: "10";
-}
-
-.jack .n::after {
-    content: "J";
-}
-
-
-.queen .n::after {
-    content: "Q";
-}
-
-.king .n::after {
-    content: "K";
-}
 
 /*layout styles for .middle>div:first-child*/
 /*layoutA is similar to the middle left part of 4, 5, 6, 7, 8*/
