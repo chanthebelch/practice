@@ -16,13 +16,24 @@ var cards = [['ace', [0,0,0,0,0], [0,0,3,0,0]],
     ['queen', '&#9819'],
     ['king', '&#9818']];
 
-//function initializeACard() {
-//    var suitIndex = Math.floor(Math.random()*4);
-//    var cardIndex = Math.floor(Math.random()*13);
-//    var card = [suitIndex, cardIndex];
-//
-//    return card;
-//}
+function inputACard() {}
+
+function getACard() {
+    var suitIndex = Math.floor(Math.random()*4);
+    var cardIndex = Math.floor(Math.random()*13);
+
+    return [suitIndex, cardIndex];
+}
+
+function getAllCards() {
+    var allCards = [];
+    for (var i in suits) {
+        for (var j in cards) {
+            allCards.push([suits[i], cards[j][0]]);
+        }
+    }
+    return allCards;
+}
 
 function displayACard() {
     var suitIndex = Math.floor(Math.random()*4);
@@ -75,12 +86,25 @@ function displayACard() {
     }
 }
 
+function displayAllCards() {}
+
 $(document).ready(function() {
-    // generate 3 more copied of sample card (exponentially!)
-    for (var i = 0; i < 2; i++) {
-        var newCard = $('.card').clone();
-        $('.desk').append(newCard);
+
+    // generate 3 more copied of sample card
+    for (var i = 0; i < 3; i++) {
+        var newCard = $('.sample').clone();
+        newCard.removeClass('sample').appendTo('.desk');
     }
+
     // change a card when click on it
-    $('.card').click(displayACard);
+    var currentCards = $('.card');
+    currentCards.click(displayACard);
+    // initialize! (virtually click all shown cards!)
+    currentCards.each(function() {
+        $(this).click();
+    });
+    // change current shown cards when click on question button
+    $('#question').click(function() {
+        currentCards.click();
+    });
 });
