@@ -1,73 +1,86 @@
-$(document).ready(function() {
-    var suits = ["diamond", "club", "heart", "spade"];
-    var layouts = ["layoutA", "layoutB", "layout1", "layout2"]
-    var cards = [["ace","A", ["layoutA", "layout1"], [0,0,0,0,0],[0,0,3,0,0]],
-                 ["two", "2", ["layoutA", "layout1"], [0,0,0,0,0],[1,0,0,0,5]],
-                 ["three", "3", ["layoutA", "layoutA"], [0,0,0,0,0],[1,0,3,0,5]],
-                 ["four", "4", ["layoutA", "layout1"], [1,0,0,0,5],[0,0,0,0,0]],
-                 ["five", "5", ["layoutA", "layout1"], [1,0,0,0,5],[0,0,3,0,0]],
-                 ["six", "6", ["layoutA", "layoutA"], [1,0,3,0,5],[0,0,0,0,0]],
-                 ["seven", "7", ["layoutA", "layout1"], [1,0,3,0,5],[0,2,0,0,0]],
-                 ["eight", "8", ["layoutA", "layout2"], [1,0,3,0,5],[0,2,0,4,0]],
-                 ["nine", "9", ["layoutB", "layout1"], [1,2,3,4],[0,0,3,0,0]],
-                 ["ten", "10", ["layoutB", "layout2"], [1,2,3,4],[0,2,0,4,0]],
-                 ["jack", "J"], ["queen", "Q"], ["king", "K"]];
-    
-    function cardGenerator() {
-        var suitsIndex = Math.floor(Math.random()*4);
-        var cardsIndex = Math.floor(Math.random()*13);
-        var card = [suits[suitsIndex],cards[cardsIndex][0]];
-        
-        // remove a old suit
-        for (var i = 0; i < suits.length; i++) {
-            $(this).removeClass(suits[i]);
-        }
-        
-        // remove a old name
-        for (var i = 0; i < cards.length; i++) {
-            $(this).removeClass(cards[i][0]);
-        }
-        
-        // remove a old layout style
-        for (var i = 0; i < layouts.length; i++) {
-            $(this).find('.edge').removeClass(layouts[i]);
-            $(this).find('.center').removeClass(layouts[i]);
-        }
-        
-        // add a new suit and a new name
-        $(this).addClass(card[0]);
-        $(this).addClass(card[1]);
-        $(this).find('.n').text(cards[cardsIndex][1]);
-        
-        // add a layout style
-        if (cardsIndex < 10) {
-            var edgeLayout = cards[cardsIndex][2][0];
-            var centerLayout = cards[cardsIndex][2][1];
-            $(this).find('.edge').addClass(edgeLayout);
-            $(this).find('.center').addClass(centerLayout);
-        }
-        // fill suit contents
-        if (cardsIndex < 10) {
-            var edgeContents = cards[cardsIndex][3];
-            var centerContens = cards[cardsIndex][4];
-            
-            $('.middle div').removeClass('v');
-            for (var i = 0; i < edgeContents.length; i++) {
-                if (edgeContents[i]) {
-                    $('.edge>div:nth-child(' + edgeContents[i] + ')').addClass('v');
-                }
-            }
-            for (var i = 0; i < centerContens.length; i++) {
-                if (centerContens[i]) {
-                    $('.center>div:nth-child(' + centerContens[i] + ')').addClass('v');
-                }
-            }
-        }
-        else {
-            $('.middle div').removeClass('v');
-        }
-        
+/**
+ * Created by Michael on 3/21/2016.
+ */
+var suits = ['diamond', 'club', 'heart', 'spade'];
+var cards = [['ace', [0,0,0,0,0], [0,0,3,0,0]],
+    ['two', [0,0,0,0,0], [1,0,0,0,5]],
+    ['three', [0,0,0,0,0], [1,0,3,0,5]],
+    ['four', [1,0,0,0,5], [0,0,0,0,0]],
+    ['five', [1,0,0,0,5], [0,0,3,0,0]],
+    ['six', [1,0,3,0,5], [0,0,0,0,0]],
+    ['seven', [1,0,3,0,5], [0,2,0,0,0]],
+    ['eight', [1,0,3,0,5], [0,2,0,4,0]],
+    ['nine', [1,2,3,4], [0,0,3,0,0]],
+    ['ten', [1,2,3,4], [0,2,0,4,0]],
+    ['jack', '&#9820'],
+    ['queen', '&#9819'],
+    ['king', '&#9818']];
+
+//function initializeACard() {
+//    var suitIndex = Math.floor(Math.random()*4);
+//    var cardIndex = Math.floor(Math.random()*13);
+//    var card = [suitIndex, cardIndex];
+//
+//    return card;
+//}
+
+function displayACard() {
+    var suitIndex = Math.floor(Math.random()*4);
+    var cardIndex = Math.floor(Math.random()*13);
+    // remove a old suit class for .suit
+    for (var i = 0; i < suits.length; i++) {
+        $(this).removeClass(suits[i]);
     }
-    
-    $('.card').click(cardGenerator);
+    // remove a old value class for .value
+    for (i = 0; i < cards.length; i++) {
+        $(this).removeClass(cards[i][0]);
+    }
+
+    // add a new suit class for .suit and a new value class for .value
+    $(this).addClass(suits[suitIndex]);
+    $(this).addClass(cards[cardIndex][0]);
+
+    // change the value for the card
+    //$(this).find('.value').text(cards[cardIndex][1]);
+
+    // change the middle part of the card
+    var middle = $(this).find('.middle');
+    var edge = $(this).find('.edge');
+    var center = $(this).find('.center');
+    var cells = $(this).find('.middle>div>div');
+
+    if (cardIndex < 10) {
+
+        // remove span tag from .middle
+        middle.find('span').remove();
+
+        // remove v class for .middle>div>div
+        cells.removeClass('v');
+
+        // add a v class for the cells
+        var edgeContents = cards[cardIndex][1];
+        var centerContents = cards[cardIndex][2];
+        for (i = 0; i < edgeContents.length; i++) {
+            edge.find('div:nth-child(' + edgeContents[i] + ')').addClass('v');
+        }
+        for (i = 0; i < centerContents.length; i++) {
+            center.find('div:nth-child(' + centerContents[i] + ')').addClass('v');
+        }
+    }
+    else {
+        // remove old span child
+        middle.find('span').remove();
+        // add a new span child
+        middle.append('<span>' + cards[cardIndex][1] + '</span>');
+    }
+}
+
+$(document).ready(function() {
+    // generate 3 more copied of sample card (exponentially!)
+    for (var i = 0; i < 2; i++) {
+        var newCard = $('.card').clone();
+        $('.desk').append(newCard);
+    }
+    // change a card when click on it
+    $('.card').click(displayACard);
 });

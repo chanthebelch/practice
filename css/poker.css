@@ -1,143 +1,175 @@
+body {
+    background: #ffe01b;
+}
+#btnContainer {
+    position: absolute;
+    top: 600px;
+    left: 50%;
+    width: 100px;
+    margin-left: -50px;
+    display: none;
+}
+.desk {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    width: 1000px;
+    height: 500px;
+    margin-left: -500px;
+    background: #ffb41e;
+    border-radius: 50px;
+    box-sizing: border-box;
+    padding: 50px;
+}
 /*card layout*/
-
 .card {
     width: 200px;
     height: 300px;
-    box-sizing: padding-box;
-    border: 1px solid #646464;
+    background: #ffffff;
     border-radius: 15px;
-    box-shadow: 2px 2px 5px #646464;
+    border: 1px solid #646464;
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
 }
-
-.topleft, .btmright {
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 10px 10px 10px #323232;
+}
+.topL, .btmR {
     width: 40px;
     height: 300px;
-    border-radius: 15px;
 }
-
-.topleft {
+.topL {
     float: left;
 }
-
-.btmright {
+.btmR {
     float: right;
     transform: rotate(180deg);
 }
-
-.n, .suit {
+.value, .suit {
     text-align: center;
-}
-
-.n {
-    height: 25px;
-    font-size: 25px;
-    font-weight: bold;
-    line-height: 25px;
-    border-radius: 15px;
-}
-
-.suit {
     height: 30px;
+    line-height: 30px;
     font-size: 30px;
-    line-height: 25px;
 }
-
+.value {
+    margin: 5px 0 -5px 0;
+}
 .middle {
     height: 300px;
+    box-sizing: border-box;
     margin: 0 40px;
-    padding: 20px 0;
-    box-sizing: border-box;
+    padding: 10px 0;
 }
-
 .middle>div {
-    float: left;
     width: 40px;
-    height: 260px;
+    height: 280px;  /* 300-10*2 */
+    float: left;
 }
-
-
+/*values*/
+.ace .value::after {
+    content: 'A';
+}
+.two .value::after {
+    content: '2';
+}
+.three .value::after {
+    content: '3';
+}
+.four .value::after {
+    content: '4';
+}
+.five .value::after {
+    content: '5';
+}
+.six .value::after {
+    content: '6';
+}
+.seven .value::after {
+    content: '7';
+}
+.eight .value::after {
+    content: '8';
+}
+.nine .value::after {
+    content: '9';
+}
+.ten .value::after {
+    content: '10';
+}
+.jack .value::after {
+    content: 'J';
+}
+.queen .value::after {
+    content: 'Q';
+}
+.king .value::after {
+    content: 'K';
+}
 /*suits*/
-
 .diamond, .heart {
-    color: red;
+    color: #ff0000;
 }
-
 .club, .spade {
-    color: black;
+    color: #000000;
 }
-
 .diamond .suit::after, .diamond .v::after {
-    content: "\2666";
+    content: '\2666';
 }
-
 .club .suit::after, .club .v::after {
-    content: "\2663";
+    content: '\2663';
 }
-
 .heart .suit::after, .heart .v::after {
-    content: "\2665";
+    content: '\2665';
 }
-
 .spade .suit::after, .spade .v::after {
-    content: "\2660";
+    content: '\2660';
 }
-
-
-/*layout styles for .middle>div:first-child*/
-/*layoutA is similar to the middle left part of 4, 5, 6, 7, 8*/
-/*layoutB is similar to the middle left part of 9, 10*/
-
-.layoutA>div {
-    height: 52px;  /* (300-20*2)/5 */
+/*layout styles for different cards*/
+.middle>div>div {
+    height: 56px;  /* (300-10*2)/5 */
     box-sizing: border-box;
-    padding: 6px 0;
-    line-height: 40px;
-    font-size: 52px;
+    line-height: 56px;
+    font-size: 56px;
     text-align: center;
 }
-
-.layoutA>div:last-child {
-    transform: rotate(180deg);
+.nine .edge>div, .ten>.middle>div>div {
+    height: 70px;  /* (300-10*2)/4 */
+    padding: 7px 0;  /* (70-56)/2 */
 }
-
-.layoutB>div {
-    height: 65px;  /* (300-20*2)/4 */
-    box-sizing: border-box;
-    padding: 12.5px 0;
-    line-height: 40px;
-    font-size: 52px;
-    text-align: center;
-}
-
-.layoutB>div:last-child {
+.nine .edge>div:last-child, .ten>.middle>div>div:last-child {
     display: none;
 }
-
-.layoutB>div:nth-child(3), .layoutB>div:nth-child(4) {
+.ten .center>div:first-child {
+    margin-bottom: -35px;  /* 70/2 */
+}
+.two .center>div:last-child, .three .center>div:last-child,
+.four .edge>div:last-child, .five .edge>div:last-child,
+.six .edge>div:last-child, .seven .edge>div:last-child,
+.eight .edge>div:last-child, .eight .center>div:nth-child(4),
+.nine .edge>div:nth-child(3), .nine .edge>div:nth-child(4),
+.ten .edge>div:nth-child(3), .ten>.middle>div>div:nth-child(4) {
     transform: rotate(180deg);
 }
-
-
-/*layout styles for .middle>div:nth-child(2)*/
-/*layout1 is similar to the middle part of Ace, 3, 5, 7, 9*/
-/*layout2 is similar to the middle part of 8*/
-/*layout3 is similar to the middle part of 10*/
-.layout1>div, .layout2>div {
-    height: 52px;  /* (300-20*2)/5 */
-    box-sizing: border-box;
-    padding: 6px 0;
-    line-height: 40px;
-    font-size: 52px;
+/* layout style for J, Q, K */
+.jack>.middle div, .queen>.middle div, .king>.middle div {
+    display: none;
+}
+.middle>span {
     text-align: center;
+    display: inline-block;
+    width: 120px;
+    height: 280px;
+    line-height: 280px;
+    font-size: 120px;
 }
-
-.layout2>div:nth-child(4) {
-    transform: rotate(180deg);
-}
-/*layout3 is still in beta*/
-.layout3>div:nth-child(4) {
-    transform: rotate(180deg);
-}
-
-
-
+/*.jack span::after {*/
+    /*content: '\265C';*/
+/*}*/
+/*.queen span::after {*/
+    /*content: '\265B';*/
+/*}*/
+/*.king span::after {*/
+    /*content: '\265A';*/
+/*}*/
