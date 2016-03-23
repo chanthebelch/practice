@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>LIBRARY</title>
+    <style>
+        body {font-size: 12px; text-align: center;}
+        tr, th, td {border: 1px solid #666;}
+        table {width: 400px; border-collapse: collapse;}
+        #library th {background: #bbb;}
+        #library tr:first-child {height: 30px;}
+        #library tr:not(:first-child) {height: 60px;}
+        #library tr:nth-child(odd) {background: #ddd}
+        #control tr>td {text-align: left; padding-left: 18px;}
+        #control tr>td>* {vertical-align: middle;}
+        input, button {cursor: pointer}
+    </style>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/library.js"></script>
+</head>
+<body>
+    <table id="library">
+        <thead></thead>
+        <tbody>
+            <tr>
+                <th>选项</th>
+                <th>编号</th>
+                <th>封面</th>
+                <th>购书人</th>
+                <th>性别</th>
+                <th>购书价</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td></td>
+                <td><img src="" alt=""></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <table id="control">
+        <tr>
+            <td>
+                <input type="checkbox" name="" id="chkAll">
+                <span>全选</span>
+                <input type="checkbox" name="" id="chkRev">
+                <span>反选</span>
+                <button title="删除所选条目" id="btnDel">删除</button>
+                <button title="恢复已删除条目" id="btnRst">恢复</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

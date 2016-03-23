@@ -4,7 +4,7 @@ body {
 }
 #btnContainer {
     position: absolute;
-    top: 600px;
+    top: 500px;
     left: 50%;
     width: 200px;
     margin-left: -100px;
@@ -16,9 +16,9 @@ body {
     position: absolute;
     top: 50px;
     left: 50%;
-    width: 1000px;
-    height: 500px;
-    margin-left: -500px;
+    width: 988px;  /* (200+1*2+10*2)*4 + 50*2 */
+    height: 422px;  /* 300+1*2+10*2 + 50*2 */
+    margin-left: -494px;
     background: #ffb41e;
     border-radius: 50px;
     box-sizing: border-box;
