@@ -1,0 +1,158 @@
+body {
+    background-color: antiquewhite;
+}
+.container {
+    display: inline-block;
+    margin: 50px 200px 50px 50px;
+}
+
+.oplympic {
+    margin-right: 300px;
+}
+.olympic::after {
+    content: '\25EF';  /* can NOT do it with box-shadow */
+    font-size: 200px;
+    color: cyan;
+    background-color: transparent;
+    border-radius: 50%;
+    text-shadow:  /* can NOT do it with box-shadow */
+        120px 0 black,
+        240px 0 red,
+        60px 60px yellow,
+        180px 60px green;
+}
+
+.delicious {
+    height: 100px;
+    width: 100px;;
+    background: #fff;
+    box-shadow:
+        0 100px #000,
+        100px 100px #d3d3d3,
+        100px 0 #3274d0;
+}
+
+.ibm, .ibm::before, .ibm::after{
+    position: relative;
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    background-color: #fff;
+}
+.ibm::before {
+    content: 'IBM';
+    color: #000;
+    font-weight: bolder;
+    font-size: 100px;
+    line-height: 100px;
+}
+.ibm::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    background: -webkit-repeating-linear-gradient(bottom, transparent 0, transparent 5px, #fff 5px, #fff 9px);
+}
+
+.dell {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border: 10px solid #29abe2;
+    border-radius: 50%;
+    transform: rotate(-45deg);
+}
+.dell::before {
+    content: 'D\00A0\00A0LL';
+    color: #29abe2;
+    font-size: 50px;
+    font-weight: bolder;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    position: absolute;
+    left: 10px;
+    top: 50px;
+    transform: rotate(45deg);
+}
+.dell::after {
+    content: 'E';
+    color: #29abe2;
+    font-size: 50px;
+    font-weight: bolder;
+    font-family: sans-serif;
+    position: absolute;
+    left: 50px;
+    top: 40px;
+    transform: skew(15deg);  /* skew is needed */
+}
+
+.hp {
+    position: relative;
+    width: 300px;
+    height: 150px;
+    border-radius: 20px;
+    background: -webkit-radial-gradient(circle, #fff 40%, #295497 41%);
+}
+.hp::after {
+    content: 'hp';
+    color: #295497;
+    font-size: 160px;
+    line-height: 150px;
+    font-family: League Gothic Condensed;
+    position: absolute;
+    left: 120px;
+    top: -5px;
+    transform: rotate(15deg);  /* how to stretch it vertically? */
+    text-shadow:
+        -5px -5px #fff,
+        5px -5px #fff,
+        5px 5px #fff,
+        -5px 5px #fff;
+}
+
+.facebook {
+    width: 100px;
+    height: 100px;
+    background: #306090;
+    border-radius: 5px;
+}
+.facebook::after {
+    content: 'f';
+    font-family: sans-serif;
+    color: #fff;
+    font-size: 110px;
+    font-weight: bold;
+    position: relative;
+    top: 0;
+    left: 50px;
+}
+
+.bmw {
+    position: relative;
+    width: 0;
+    height: 0;
+    border: 50px solid;
+    border-color: #209090 #ddd;
+    border-radius: 50%;
+    transform: rotate(-45deg);
+}
+.bmw::before {
+    content: '';
+    width: 100px;
+    height: 100px;
+    background: transparent;
+    border: 20px solid #333;
+    border-radius: 50%;
+    position: absolute;
+    top: -70px;
+    left: -70px;
+}
+.bmw::after {
+    content: '';
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: -webkit-radial-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2) 40%, transparent);
+    position: absolute;
+    top: -200px;
+    left: -100px;
+}

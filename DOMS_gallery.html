@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: "Helvetica","Arial",serif;
+            color: #333;
+            background-color: #ccc;
+            margin: 1em 10%;
+        }
+        h1 {
+            color: #333;
+            background-color: transparent;
+        }
+        a {
+            color: #c60;
+            background-color: transparent;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        ul {
+            padding: 0;
+        }
+        li {
+            float: left;
+            padding: 1em;
+            list-style: none;
+        }
+        img {
+            display:block;
+            clear:both;
+        }
+        #placeholder {
+            width: 400px;
+            height: 300px;
+        }
+    </style>
+    <script>
+        function showPic(whichPic) {
+            //
+            var source = whichPic.getAttribute('href');
+            var placeholder = document.getElementById("placeholder");
+            placeholder.setAttribute('src', source);
+            //
+            var text = whichPic.getAttribute("title");
+            var description = document.getElementById("description");
+            description.firstChild.nodeValue = text;
+        }
+
+        function prepareGallery() {
+            if (!document.getElementsByTagName) return false;
+            if (!document.getElementById) return false;
+            if (!document.getElementById("imagegallery")) return false;
+            var gallery = document.getElementById("imagegallery");
+            var links = gallery.getElementsByTagName("a");
+            for ( var i = 0; i < links.length; i++) {
+                links[i].onclick = function() {
+                showPic(this);
+                return false;
+                }
+            }
+        }
+
+        function countBodyChildren() {
+            var body_element = document.getElementsByTagName("body")[0];
+            alert('the body element\'s nodeType is ' + body_element.nodeType + '\nand it has ' + body_element.childNodes.length + ' nodes.');
+        }
+
+        function popUp(winURL) {
+            window.open(winURL,"popup","width=320,height=480");
+        }
+
+        function prepareLinks() {
+            var links = document.getElementsByTagName("a");
+            for (var i = 0; i < links.length; i++) {
+                if (links[i].getAttribute('class') == "popup") {
+                    links[i].onclick = function() {
+                        popUp(this.getAttribute('href'));
+                        return false;
+                    }
+                }
+            }
+        }
+
+        window.onload = function() {
+            prepareGallery();
+            prepareLinks();
+        };
+    </script>
+</head>
+<body>
+    <h1>Snapshots</h1>
+    <ul id="imagegallery">
+        <li><a href="images/Cattle.jpg" title="A fireworks display">Fireworks</a></li>
+        <li><a href="images/cover_css_zen_garden.jpg" title="A cup of black coffee">Coffee</a></li>
+        <li><a href="images/cover_metamorphosis.jpg" title="A red, red rose">Rose</a></li>
+        <li><a href="images/cover_the_three_boy_problem.jpg" title="The famous clock">Big Ben</a></li>
+    </ul>
+    <img id="placeholder" alt="my image gallery" />
+    <p id="description">Choose an image.</p>
+    <p><a href="http://www.example.com" onclick="return false;">Click me (does not work)</a></p>
+    <p><a href="http://www.example.com" class="popup">Click me (popup window alert!)</a></p>
+</body>
+</html>

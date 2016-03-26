@@ -15,8 +15,65 @@
         #control tr>td>* {vertical-align: middle;}
         input, button {cursor: pointer}
     </style>
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/library.js"></script>
+    <script>
+        var book1 = {
+            number: 1001,
+            cover: 'image/cover_css_zen_garden.jpg',
+            buyer: '李晓波',
+            buyerGender: '男',
+            price: 35.6
+        };
+        var book2 = {
+            number: 1002,
+            cover: 'image/cover_metamorphosis.jpg',
+            buyer: '孙明明',
+            buyerGender: '男',
+            price: 37.8
+        };
+        var book3 = {
+            number: 1003,
+            cover: 'image/cover_the_three_body_problem.jpg',
+            buyer: '张文萱',
+            buyerGender: '女',
+            price: 45.6
+        };
+        var books = [book1, book2, book3];
+
+        function expandLibrary() {
+            var sampleTr = document.getElementById('sample');
+            for (var i = 0; i < 6; i++) {
+                var newTr = sampleTr.cloneNode(true);
+                newTr.removeAttribute('id');
+                sampleTr.parentNode.appendChild(newTr);
+            }
+        }
+
+
+        function main() {
+
+            expandLibrary();
+
+            var library = document.getElementById('library').childNodes[3];
+            var checkBoxes = library.getElementsByTagName('input');
+            var btnChkAll = document.getElementById('chkAll');
+            var btnChkRev = document.getElementById('chkRev');
+
+            function checkAll() {
+                var chkAllstatus = btnChkAll.getAttribute('checked');
+                for (var i = 0; i < checkBoxes.length; i++) {
+                    checkBoxes[i].setAttribute('checked', chkAllstatus);
+                }
+            }
+
+            function checkRev() {
+
+            }
+
+            btnChkAll.onclick = checkAll;
+        }
+
+        window.onload = main;
+    </script>
 </head>
 <body>
     <table id="library">
@@ -30,7 +87,7 @@
                 <th>性别</th>
                 <th>购书价</th>
             </tr>
-            <tr>
+            <tr id="sample">
                 <td><input type="checkbox" name="" id=""></td>
                 <td></td>
                 <td><img src="" alt=""></td>
