@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Explaining the Document Object Model</title>
+<style>
+    body {
+        font-family: "Helvetica","Arial",sans-serif;
+        font-size: 10pt;
+    }
+    abbr {
+        text-decoration: none;
+        border: 0;
+        font-style: normal;
+    }
+</style>
+<script>
+    function displayDList() {
+        var abbrTag = document.getElementsByTagName('abbr');
+        var x = abbrTag.length;
+        var defs = [];
+        if (x < 1) {return false}
+        for (var i = 0; i < x; i++) {
+            var ddiscription = abbrTag[i].getAttribute('title');
+            if (!ddiscription) {continue}
+            var abbr = abbrTag[i].childNodes[0];
+            if (abbr.nodeType == 3) {
+                var dtitle = abbr.nodeValue;
+            }
+            else if (abbr.nodeType == 1) {
+                var dtitle = abbr.childNodes[0].nodeValue;
+            }
+
+            defs.push([dtitle, ddiscription]);
+        }
+        var dlTag = document.createElement('dl');
+        for (var i = 0, y = defs.length; i < y; i++) {
+            var dtTag = document.createElement('dt');
+            var ddTag = document.createElement('dd');
+            var dtTagValue = document.createTextNode(defs[i][0]);
+            var ddTagValue = document.createTextNode(defs[i][1]);
+            dtTag.appendChild(dtTagValue);
+            ddTag.appendChild(ddTagValue);
+            dlTag.appendChild(dtTag);
+            dlTag.appendChild(ddTag);
+        }
+        var body = document.getElementsByTagName('body')[0];
+        body.appendChild(dlTag);
+    }
+    window.onload = displayDList;
+</script>
+</head>
+<body>
+<h1>What is the Document Object Model?</h1>
+<p>The <abbr title="World Wide Web Consortium">W3C</abbr> defines the <abbr title="Document Object Model"><em>DOM</em></abbr> as:</p>
+<blockquote cite="http://www.w3.org/DOM/">
+<p>A platform- and language-neutral interface that will allow programs and scripts to dynamically access and update the content, structure and style of documents.</p>
+</blockquote>
+<p>It is an <abbr title="Application Programming Interface">API</abbr> that can be used to navigate <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="eXtensible Markup Language">XML</abbr> documents.</p>
+</body>
+</html>

@@ -1,0 +1,118 @@
+#stage {
+    -webkit-perspective: 500;
+    -moz-perspective: 500;
+    -ms-perspective: 500;
+    perspective: 500;
+
+    -webkit-perspective-origin: 50% 50%;
+    -moz-perspective-origin: 50% 50%;
+    -ms-perspective-origin: 50% 50%;
+    perspective-origin: 50% 50%;
+
+    width: 200px;
+    height: 200px;
+    margin: 100px 0 0 100px;
+    position: relative;
+    left: 50%;
+    margin-left: -100px;
+}
+.cube {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+.cube div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+}
+#cubetop {
+    background-color: purple;
+}
+#cubebottom {
+    background-color: red;
+}
+#cubeleft {
+    background-color: green;
+}
+#cuberight {
+    background-color: orange;
+}
+#cubefront {background-color: transparent}
+#cubeback {
+    background-color: blue;
+}
+
+
+
+/*animation*/
+.cube:hover #cubetop {
+    animation: cubetop 1s linear;
+    animation-fill-mode: forwards;
+}
+.cube:hover #cubebottom {
+    animation: cubebottom 1s linear;
+    animation-fill-mode: forwards;
+}
+.cube:hover #cubeleft {
+    animation: cubeleft 2s linear;
+    animation-fill-mode: forwards;
+}
+.cube:hover #cuberight {
+    animation: cuberight 2s linear;
+    animation-fill-mode: forwards;
+}
+.cube:hover #cubeback {
+    animation: cubeback 1s linear 1s;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes cubetop {
+    0% {}
+    100% {
+        transform-origin: top;
+        transform: rotateX(-90deg);
+    }
+}
+@keyframes cubebottom {
+    0% {}
+    100% {
+        transform-origin: bottom;
+        transform: rotateX(90deg);
+    }
+}
+@keyframes cubeleft {
+    0% {}
+    50% {
+        transform-origin: left;
+        transform: rotateY(90deg);
+    }
+    100% {
+        transform: translate3d(-200px, 0, -200px);
+    }
+}
+@keyframes cuberight {
+    0% {}
+    50% {
+        transform-origin: right;
+        transform: rotateY(-90deg);
+    }
+    100% {
+        transform-origin: left;
+        transform: rotateY(90deg);
+    }
+}
+@keyframes cubeback {
+    0% {}
+    100% {
+        transform: translateZ(-200px);
+    }
+}

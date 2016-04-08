@@ -6,9 +6,6 @@ body {
     margin: 50px 200px 50px 50px;
 }
 
-.oplympic {
-    margin-right: 300px;
-}
 .olympic::after {
     content: '\25EF';  /* can NOT do it with box-shadow */
     font-size: 200px;
@@ -84,7 +81,7 @@ body {
     top: 40px;
     transform: skew(15deg);  /* skew is needed */
 }
-
+/* there is another solution! */
 .hp {
     position: relative;
     width: 300px;
@@ -155,4 +152,58 @@ body {
     position: absolute;
     top: -200px;
     left: -100px;
+}
+
+.skype {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: #29abe2;
+    border-radius: 50%;
+/*    border: 5px groove #29abe2;*/
+}
+.skype::before {
+    content: '';
+    width: 50px;
+    height: 130px;
+    background-color: #29abe2;
+    border-radius: 50px;
+    position: absolute;
+    top: -16px;
+    left: 23px;
+    transform: rotate(-45deg);
+}
+.skype::after {
+    content: 'S';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 80px;
+    font-family: cursive;
+    font-weight: bold;
+    color: #fff;
+}
+.google-drive {
+    width: 100px;
+    height: 30px;
+    background-color: #4688f4;
+    transform: skew(-45deg, 0);
+}
+.google-drive::before {
+    content: "";
+    width: 100px;
+    height: 30px;
+    background-color: #1fa463;
+    position: absolute;
+    transform-origin: 0 100%;
+    transform: rotate(-60deg);
+}
+.google-drive::after {
+    content: "";
+    width: 100px;
+    height: 30px;
+    background-color: #ffd04a;
+    position: absolute;
+    transform-origin: 100% 100%;
+    transform: rotate(45deg);
 }

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>parallax</title>
+    <style>
+        @keyframes desertMove {
+            0% {background-position: 0% 0%}
+            100% {background-position: -1159px 0%}
+        }
+        #desert {
+            width: 1159px;
+            height: 600px;
+            background-image: url(images/desert.jpg);
+            position: relative;
+            animation: desertMove 18s linear infinite;
+        }
+        @keyframes tumbleweed {
+            0% {}
+            100% {
+                left: -60px;
+                transform: rotate(-1080deg);
+            }
+        }
+        #tumbleweed {
+            width: 40px;
+            height: 40px;
+            background-image: url(images/mozilla-icon.png);
+            border-radius: 20px;
+            position: absolute;
+            top: 410px;
+            left: 1140px;
+            z-index: 2;
+            animation: tumbleweed 5s ease-in 1s infinite;
+        }
+        @keyframes shadow {
+            0% {}
+            100% {left: -60px;}
+        }
+        #shadow {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            background-image: radial-gradient(53% 56%, circle cover rgba(0, 0, 0, 0.5));
+            border-radius: 20px;
+            position: absolute;
+            top: 430px;
+            left: 1140px;
+            z-index: 1;
+            transform: scale(1, 0.2);
+            animation: shadow 5s ease-in 1s infinite;
+        }
+        @keyframes robotMove {
+            0% {transform: translate(0, 0)}
+            50% {transform: translate(0, 10px)}
+            100 {transform: translate(0, 0)}
+        }
+        #robot {
+            width: 203px;
+            height: 300px;
+            background-image: url(images/robot.png);
+            position: absolute;
+            left: 100px;
+            top: 310px;
+            z-index: 3;
+            animation: robotMove 1s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="desert">
+        <div id="tumbleweed"></div>
+        <div id="shadow"></div>
+        <div id="robot"></div>
+    </div>
+</body>
+</html>

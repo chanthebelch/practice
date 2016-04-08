@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>perspective</title>
+    <style>
+        .hlisting {
+            -webkit-perspective : 1000;
+            perspective: 1000;
+        }
+        .item {
+            float: left;
+            margin-right: 10px;
+            transform-style: preserve-3d;
+            transform : rotateY(45deg);
+            transition: all .5s ease-in-out;
+        }
+        .item:last-child {margin-right: 0}
+        .item:hover {
+            -webkit-transform : rotateY(0);
+            transform : rotateY(0);
+        }
+        .item img {
+            width: 250px;
+            height: 300px;
+            border : 10px solid rgb(220,220,220);
+            box-shadow : -5px 5px 15px rgba(0,0,0,.25);
+        }
+        .item:hover img {
+            -webkit-box-shadow : 0 5px 15px rgba(0,0,0,.25);
+            box-shadow : 0 5px 15px rgba(0,0,0,.25);
+        }
+        .description {
+            position: relative;
+            top: -150px;
+            padding: 20px;
+            width: 120px;
+            color: #fff;
+            background-color: rgb(53, 57, 70);
+            border: 10px solid rgb(220, 220, 220);
+            box-shadow : -20px 20px 30px rgba(0,0,0,.25);
+            transform: translateZ(80px);
+            transition: all .5s ease-in-out;
+        }
+        .item:hover .description {
+            box-shadow : 0 10px 15px rgba(0,0,0,.5);
+            transform : translateZ(5px) translateX(20px);
+        }
+        .description a {
+            background-color: #af2222;
+            padding: 5px 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            font: 1em sans-serif;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <section class="hlisting offer sale group">
+        <div class="item">
+            <a href=""><img src="images/Ocean.jpg" alt="The Scarlet Menace"></a>
+            <div class="description">
+                <h3 class="fn">The Scarlet Menace</h3>
+                <a href="" class="action">Add to basket</a>
+            </div>
+        </div>
+        <div class="item">
+            <a href=""><img src="images/animal-farm.jpg" alt="The Jewels of Doom"></a>
+            <div class="description">
+                <h3 class="fn">The Jewels of Doom</h3>
+                <a href="" class="action">Add to basket</a>
+            </div>
+        </div>
+        <div class="item">
+            <a href=""><img src="images/cover_metamorphosis.jpg" alt="The Yellow Murders"></a>
+            <div class="description">
+                <h3 class="fn">The Yellow Murders</h3>
+                <a href="" class="action">Add to basket</a>
+            </div>
+        </div>
+        <div class="item">
+            <a href=""><img src="images/squealer.jpg" alt="Death's Diary"></a>
+            <div class="description">
+                <h3 class="fn">Death's Diary</h3>
+                <a href="" class="action">Add to basket</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

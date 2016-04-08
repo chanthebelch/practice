@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D Cube</title>
+    <style>
+        #stage {
+            -webkit-perspective: 500;
+            -moz-perspective: 500;
+            -ms-perspective: 500;
+            perspective: 500;
+
+            -webkit-perspective-origin: 50% 50%;
+            -moz-perspective-origin: 50% 50%;
+            -ms-perspective-origin: 50% 50%;
+            perspective-origin: 50% 50%;
+
+            width: 200px;
+            height: 200px;
+            margin: 100px 0 0 100px;
+            position: relative;
+            left: 50%;
+            margin-left: -100px;
+        }
+        .cube {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        .cube div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.7;
+        }
+        #cubetop {
+            background-color: purple;
+            transform-origin: top;
+            transform: rotateX(-90deg);
+        }
+        #cubebottom {
+            background-color: red;
+            transform-origin: bottom;
+            transform: rotateX(90deg);
+        }
+        #cubeleft {
+            background-color: green;
+            transform-origin: left;
+            transform: rotateY(90deg);
+        }
+        #cuberight {
+            background-color: orange;
+            transform-origin: right;
+            transform: rotateY(-90deg);
+        }
+        #cubeback {
+            background-color: blue;
+            transform: translateZ(-200px);
+        }
+        #cubefront {background-color: transparent}
+        #cubefront::before {
+            content: '';
+            width: 150px;
+            height: 3px;
+            background-color: black;
+            position: absolute;
+            left: 100px;
+            top: 97px;
+        }
+        #cubefront::after {
+            content: '';
+            width: 150px;
+            height: 1px;
+            background-color: white;
+            border-top: 1px dashed black;
+            border-bottom: 1px dashed black;
+            position: absolute;
+            left: 100px;
+            top: 99px;
+            transform-origin: left;
+            transform: rotate(-90deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="x">
+        <input type="range" name="range" id="xslider" min="0" max="360" step="36" value="0">
+        <label for="xslider">X:</label>
+        <span id="xdegrees">0</span>
+    </div>
+    <div id="y">
+        <input type="range" name="range" id="yslider" min="0" max="360" step="36" value="0">
+        <label for="yslider">Y:</label>
+        <span id="ydegrees">0</span>
+    </div>
+    <div id="z">
+        <input type="range" name="range" id="zslider" min="0" max="360" step="36" value="0">
+        <label for="xslider">Z:</label>
+        <span id="zdegrees">0</span>
+    </div>
+    <div id="stage">
+        <div class="cube">
+            <div id="cubetop"></div>
+            <div id="cuberight"></div>
+            <div id="cubebottom"></div>
+            <div id="cubeleft"></div>
+            <div id="cubefront"></div>
+            <div id="cubeback"></div>
+        </div>
+    </div>
+    <script src="js/3dCube_slider.js"></script>
+</body>
+</html>

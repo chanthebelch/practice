@@ -560,10 +560,21 @@ body {
 }
 
 .chinese-coin {
-    width: 40px;
-    height: 40px;
-    border: 40px solid red;
-    border-radius: 40px;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+    position: relative;
+}
+.chinese-coin::before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
 }
 
 .track {

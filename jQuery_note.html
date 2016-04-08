@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery note</title>
+    <link rel="stylesheet" href="css/jQuery_note.css">
+</head>
+<body>
+    <article>
+        <header>
+            <h1>JavaScript: The Definitive Guide</h1>
+            <nav>
+                <ul>
+                    <!--created by js-->
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <h2>The jQuery Function</h2>
+            <p>Four ways to invoke <abbr title="jQuery()">$()</abbr> function.</p>
+            <ol>
+                <li>to select DOM elements: <code title="the second argument is optional">$(selector, context)</code> (NOTE: it returns jQuery objects)</li>
+                <li>to convert raw DOM elements to jQuery objects: <code>$(this), $(document)...</code> (NOTE: passing an array of elements to <code>$()</code> are accepted)</li>
+                <li>to create new elements, for example: <code title="the second argument is optional">var img = $('&lt;img/&gt;', {src:url, css: {borderWidth:5}, click:handleClick})</code></li>
+                <li>the jQuery version of the  <code>onLoad()</code> function, <code>$(f)</code> has a moe verbose form <code>$(document).ready(f)</code></li>
+            </ol>
+        </section>
+        <section>
+            <h2><code>jQuery.noConflict()</code></h2>
+            <p><code>jQuery.noConflict(); // Restore $ to its original state<br>jQuery(function($) { // Use $ as a local alias<br> // Put all your jQuery code here<br>});</code></p>
+        </section>
+        <section>
+            <h2>jQuery objects &#8651; raw DOM elements</h2>
+            <ol>
+                <li><code>.get()</code> and <code>[i]</code> convert a single one</li>
+                <li><code>.toArray()</code> convert all of them to a true array</li>
+                <li>see the second way to invoke <code>$()</code> function</li>
+            </ol>
+        </section>
+        <section>
+            <h2>jQuery object property</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>1.</td>
+                        <td><code>.length</code></td>
+                        <td><code>.size()</code> method can return this value</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td><code>[i]</code></td>
+                        <td>numeric properties from <code>0</code> to <code>length -1</code>. NOTE: doing this will convert the jQuery object to a raw DOM element!</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td><code>.selector</code></td>
+                        <td>the selector string (if any) that was used when the jQuery object was created</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td><code>.context</code></td>
+                        <td>the context object that was passed as the second argument to  <code>$()</code></td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td><code>jquery</code></td>
+                        <td>the jQuery version number as a string. Testing for the existence of this property is a simple way to distinguish jQuery objects from other array-like objects.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h2>each() map() index() is()</h2>
+        </section>
+        <section>
+            <h2>jQuery selector</h2>
+            <h3>id and class selector</h3>
+            <ul>
+                <li><code>#id</code> if there are more than one, only return the first</li>
+                <li><code>.class</code></li>
+            </ul>
+            <h3>attribute selector</h3>
+            <ul>
+                <li><code>[attr]</code> have an  <i>attr</i> attribute (regardless of its value)</li>
+                <li><code>[attr=val]</code> <i>attr</i> attribute whose value is  <i>val</i></li>
+                <li><code>[attr!=val]</code> have no  <i>attr</i> attribute, or is not equal to  <i>val</i> (jQuery extension)</li>
+                <li><code>[attr^=val]</code> begins with <i>val</i></li>
+                <li><code>[attr$=val]</code> ends with <i>val</i></li>
+                <li><code>[attr*=val]</code> contains <i>val</i></li>
+                <li><code>[attr~=val]</code> Matches elements whose  <i>attr</i> attribute, when interpreted as a list of words separated by spaces, includes the word  <i>val</i> . Thus the selector “div.note” is the same as “div[class~=note]”.</li>
+                <li><code>[attr|=val]</code> Matches elements whose  <i>attr</i> attribute has a value that begins with  <i>val</i> and is optionally followed by a hyphen and any other characters.</li>
+            </ul>
+            <h3>form type selector</h3>
+            <ul>
+                <li><code>:button</code></li>
+                <li><code>:checkbox</code></li>
+                <li><code>:file</code></li>
+                <li><code>:image</code></li>
+                <li><code>:input</code> Matches user input elements: &lt;input&gt; ,  &lt;textarea&gt;, &lt;select&gt; , and &lt;button&gt; (jQuery extension).</li>
+                <li><code>:password</code></li>
+                <li><code>:radio</code></li>
+                <li><code>:reset</code></li>
+                <li><code>:submit</code></li>
+                <li><code>:text</code></li>
+            </ul>
+            <h3>status selector</h3>
+            <ul>
+                <li><code>:disabled</code></li>
+                <li><code>:enabled</code></li>
+                <li><code>:hidden</code></li>
+                <li><code>:selected</code> Matches &lt;option&gt; elements that are selected. Use :checked for selected checkboxes and radio buttons (jQuery extension).</li>
+                <li><code>:visible</code></li>
+            </ul>
+            <h3>position selector</h3>
+            <ul>
+                <li><code>:eq(n)</code> and <code>:nth(n)</code></li>
+                <li><code>:lt(n)</code> and <code>:gt(n)</code></li>
+                <li><code>:first</code> and <code>:last</code></li>
+                <li><code>:odd</code> and <code>:even</code></li>
+            </ul>
+            <h3>DOM tree selector</h3>
+            <ul>
+                <li><code>:first-child</code></li>
+                <li><code>:last-child</code></li>
+                <li><code>:nth-child(n)</code> <i>n</i> can be a number, the word “even”, the word “odd”, or a formula. </li>
+                <li><code>:only-child</code> Matches elements that are the only child of their parent.</li>
+                <li><code>:parent</code> Matches elements that are parents. This is the opposite of <code>:empty</code> (jQuery extension).</li>
+                <li><code>:empty</code> Matches elements that have no children, including no text content.</li>
+                <li><code>:has(sel)</code> Matches elements that have a descendant matching the nested selector <i>sel</i> .</li>
+                <li><code>:not(sel)</code> Matches elements that are not matched by the nested selector <i>sel</i></li>
+            </ul>
+            <h3>other selector</h3>
+            <ul>
+                <li><code>:contains(text)</code> Finding elements based on textual content.</li>
+                <li><code>:header</code> Matches any header element: &lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, &lt;h4&gt;, &lt;h5&gt;, or &lt;h6&gt; (jQuery extension).</li>
+                <li><code>:animated</code> Matches elements that are currently being animated by jQuery.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Selection Methods</h2>
+            <p>many of the methods provide the same functionality as the selector grammar itself. Note that these methods return a jQuery object with a single element. This is different than regular array indexing, which returns a single element with no jQuery object wrapped around it</p>
+            <ul>
+                <li><code>.first()</code> and <code>.last()</code></li>
+                <li><code>.eq()</code></li>
+                <li><code>.slice()</code> works like the <code>Array.slice()</code> method</li>
+                <li><code>.filter()</code> argument can be a selector or a predicate function. See also <code>jQuery.grep()</code></li>
+                <li><code>.not()</code> just like <code>filter()</code>, except that it inverts the sense of the filter</li>
+                <li><code title="can NOT take function as argument">.add()</code>augments a selection rather than filtering or refining it, also removes duplicate elements and sorts the combined selection so that the elements are in document order</li>
+                <li><code>.find()</code></li>
+                <li><code>.children()</code> returns the immediate child elements of each selected element, filtering them with an optional selector.</li>
+                <li><code>.contents()</code> similar to <code>children()</code>, but it returns all child nodes, including text nodes, of each element.Also, if any of the selected elements is an &lt;iframe&gt;, <code>contents()</code> returns the document object for the content of that &lt;iframe&gt;. Note that <code>contents()</code> does not accept an optional selector string</li>
+                <li><code>.next()</code> and <code>.prev()</code></li>
+                <li><code>.nextAll()</code> and <code>.prevAll()</code></li>
+                <li><code>.nextUntil()</code> and <code>.prevUntil()</code></li>
+                <li><code>.contains()</code></li>
+                <li><code>.is()</code></li>
+                <li><code>.has()</code></li>
+                <li><code>.siblings()</code></li>
+                <li><code>.parent()</code> returns the parent of each selected element</li>
+                <li><code>.parentUntil()</code> returns the ancestors of each selected element until the first ancestor that matches the specified selector.</li>
+                <li><code>.closest()</code> For this method, an element is considered an ancestor of itself. In jQuery 1.4, you can also pass an ancestor element as the second argument to <code>closest()</code>, to prevent jQuery from climbing the ancestor tree beyond the specified element:</li>
+            </ul>
+            <p>examples:<br><code>$("a[href]").closest("div") // Innermost &lt;div&gt;s that contain links<br>$("a[href]").parentsUntil(":not(div)") // All &lt;div&gt; wrappers directly around &lt;a&gt;</code></p>
+        </section>
+        <section>
+            <h2>Reverting to a previous selection</h2>
+            <ul>
+                <li><code>.end()</code> Calling <code>end()</code> in a method chain restores the set of matched elements to its previous state.</li>
+                <li><code>.pushStack()</code></li>
+                <li><code>.andSelf()</code> returns a new jQuery object that includes all of the elements of the current selection plus all of the elements (minus duplicates) of the previous selection. <code>andSelf()</code> works like the <code>add()</code> method, and “addPrev” might be a more descriptive name for it.</li>
+                <p>examples:<br><code>var sel = $("div"); // Select all &lt;div&gt; elements<br>sel.pushStack(document.getElementsByTagName("p")); // Modify it to all &lt;p&gt; elts<br>sel.end(); // Restore &lt;div&gt; elements</code></p>
+            </ul>
+        </section>
+        <section>
+            <h2>jQuery Getters and Setters</h2>
+            <h3>1. Getting and Setting HTML Attributes</h3>
+            <ul>
+                <li><code>attr()</code></li>
+                <li><code>removeAttr()</code></li>
+            </ul>
+            <h3>2. Getting and Setting CSS Attributes</h3>
+            <ul>
+                <li><code>css()</code></li>
+            </ul>
+            <h3>3. Getting and Setting CSS Classes</h3>
+            <ul>
+                <li><code>addClass()</code></li>
+                <li><code>removeClass()</code></li>
+                <li><code>toggleClass()</code></li>
+                <li><code>hasClass()</code> similar to <code>is()</code> but NOT that flexible, for it works for only a single class name and does NOT support function arguments</li>
+            </ul>
+            <p>These jQuery methods are like the <code>classList</code> methods</p>
+            <h3>4. Getting and Setting HTML Form Values</h3>
+            <ul>
+                <li><code>val()</code></li>
+            </ul>
+            <h3>5. Getting and Setting Element Content</h3>
+            <ul>
+                <li><code>text()</code> works even in browsers that do not support the  <code>textContent</code> or  <code>innerText</code> properties</li>
+                <li><code>html()</code> jQuery uses the <code>innerHTML</code> property to do this: <code>x.html()</code> is effectively the same as  <code>x[0].innerHTML</code></li>
+            </ul>
+            <h3>6. Getting and Setting Element Geometry</h3>
+            <ul>
+                <li><code title="document">offset()</code> This method measures positions relative to the document and returns them in the form of an object with  left and  top properties that hold the X and Y coordinates. If you pass an object with these properties to the method, it sets the position you specify. It sets the CSS position attribute as necessary to make elements positionable</li>
+                <li><code title="absolute">position()</code> similar to <code>offset()</code>, except that it is a getter only and it returns element positions relative to their offset parent, rather than relative to the document as a whole.</li>
+                <li><code title="absolute">offsetParent()</code> maps each element to the nearest positioned ancestor element or to the &lt;body&gt; element.</li>
+                <li><code>width()</code> and <code>height()</code> return the basic width and height and do NOT include padding, borders, or margins</li>
+                <li><code>innerWidth()</code> and <code>innerHeight()</code> return the width and height of an element plus the width and height of its padding</li>
+                <li><code>outerWidth()</code> and <code>outerHeight()</code> normally return the element’s dimensions plus its padding and border. If you pass the value  true to either of these methods, they also add in the size of the element’s margins</li>
+                <li><code>scrollTop()</code> and <code>scrollLeft()</code> query the scrollbar positions for an element or set the scrollbar positions for all elements. Unlike other setters, they can NOT take function as argument</li>
+            </ul>
+            <h3 id="data">7. Getting and Setting Element Data</h3>
+            <ul>
+                <li><code>data()</code> jQuery also defines utility function forms of the  <code>data()</code> and <code>removeData()</code> methods</li>
+                <li><code>removeData()</code></li>
+            </ul>
+        </section>
+        <section>
+            <h2>Altering Document Structure</h2>
+            <h3>1. Inserting and Replacing Elements</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>operation</th>
+                        <th>$(target).<i>method</i>(content)</th>
+                        <th>$(content).<i>method</i>(target)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>insert content at end of target</td>
+                    <td><code>append()</code></td>
+                    <td><code>appendTo()</code></td>
+                </tr>
+                <tr>
+                    <td>insert content at start of target</td>
+                    <td><code>prepend()</code></td>
+                    <td><code>prependTo()</code></td>
+                </tr>
+                <tr>
+                    <td>insert content after target</td>
+                    <td><code>after()</code></td>
+                    <td><code>insertAfter()</code></td>
+                </tr>
+                <tr>
+                    <td>insert content before target</td>
+                    <td><code>before()</code></td>
+                    <td><code>insertBefore()</code></td>
+                </tr>
+                <tr>
+                    <td>replace target with content</td>
+                    <td><code>replaceWith()</code></td>
+                    <td><code>replaceAll()</code></td>
+                </tr>
+            </tbody>
+            </table>
+            <h3>2. Copying Elements</h3>
+            <p><code>clone()</code> does not normally copy <a href="#event-handler">event handlers</a> or other <a href="#data">data</a> you have associated with elements; pass <code>true</code> if you want to clone that additional data as well.</p>
+            <h3>3. Wrapping Elements</h3>
+            <ul>
+                <li><code>wrap()</code> wraps each of the selected elements</li>
+                <li><code>wrapInner()</code> wraps the contents of each selected element</li>
+                <li><code>wrapAll()</code> wraps the selected elements as a group</li>
+            </ul>
+            <h3>4. Deleting Elements</h3>
+            <ul>
+                <li><code>empty()</code></li>
+                <li><code>remove()</code> Note that it is not necessary to remove elements before reinserting them into the document: you can simply insert them at a new location and they will be moved.</li>
+                <li><code>detach()</code> works just like <code>remove()</code> but does not remove event handlers and data. <code>detach()</code> may be more useful when you want to temporarily remove elements from the document for later reinsertion</li>
+                <li><code>unwrap()</code> removes the parent element of each selected element. It does NOT accept an optional selector argument</li>
+            </ul>
+        </section>
+    </article>
+</body>
+</html>

@@ -1,0 +1,78 @@
+#stage {
+    width: 500px;
+    height: 300px;
+    margin: 10%;
+
+    -webkit-perspective: 900;
+    -moz-perspective: ;
+    -ms-perspective: ;
+    perspective: ;
+
+    -webkit-perspective-origin: 100% 0;
+    -moz-perspective-origin: ;
+    -ms-perspective-origin: ;
+    perspective-origin: ;
+}
+
+#toprow, #bottomrow {
+    position: relative;
+    left: 100px;
+    transform-style: preserve-3d;
+}
+#toprow {
+    z-index: 2;
+}
+
+#toprow .right {left: 40px;}
+#toprow .flat {
+    left: 20px;
+    top: 50px;
+}
+#bottomrow {
+    left: 60px;
+    top: 100px;
+}
+#bottomrow .right {left: 40px;}
+#bottomrow .flat {left: 15px; top: 50px;}
+#bottomrow .secondcol {left: 100px;}
+#bottomrow .left.secondcol {left: 80px;}
+#bottomrow .right.secondcol {left: 120px;}
+
+
+.card {
+    width: 70px;
+    height: 100px;
+    background-color: rgb(102, 102, 255);
+    background-image:
+        -webkit-linear-gradient(135deg,
+            hsla(0, 0%, 100%, 0.2) 25%,
+            hsla(0, 0%, 100%, 0) 25%,
+            hsla(0, 0%, 100%, 0) 50%,
+            hsla(0, 0%, 100%, 0.2) 50%,
+            hsla(0, 0%, 100%, 0.2) 75%,
+            hsla(0, 0%, 100%, 0) 75%,
+            hsla(0, 0%, 100%, 0.2) 100%,
+        ),
+        -webkit-linear-gradient(45deg,
+            hsla(0, 0%, 100%, 0.2) 25%,
+            hsla(0, 0%, 100%, 0) 25%,
+            hsla(0, 0%, 100%, 0) 50%,
+            hsla(0, 0%, 100%, 0.2) 50%,
+            hsla(0, 0%, 100%, 0.2) 75%,
+            hsla(0, 0%, 100%, 0) 75%,
+            hsla(0, 0%, 100%, 0.2) 100%,
+        );
+    border: 5px solid rgb(179, 179, 179);
+    border-radius: 10px;
+    position: absolute;
+}
+.left {
+    background-color: white;
+    transform: rotateY(90deg) rotateX(-22deg);
+}
+.right {
+    transform: rotateY(90deg) rotateX(22deg);
+}
+.flat {
+    transform: rotateZ(90deg) rotateY(90deg);
+}

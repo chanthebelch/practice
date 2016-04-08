@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pattern</title>
+    <style>
+        .wrap {
+            width: 300px;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            margin-left: -150px;
+        }
+        .wrap div {
+            height: 200px;
+            margin-bottom: 20px;
+        }
+        .wrap div:nth-child(1) {
+            background-color: #323232;
+            background-image: radial-gradient(#000 2px, #646464 3px, transparent 4px);
+            background-position: 0 0;
+            background-size: 6px;
+/*            background-repeat: no-repeat;*/
+        }
+        .wrap div:nth-child(2) {
+            background-color: #323232;
+            background-image: linear-gradient(#000 2px, #646464 3px, transparent 4px);
+            background-position: 0 0;
+            background-size: 18px;
+/*            background-repeat: no-repeat;*/
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

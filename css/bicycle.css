@@ -1,0 +1,152 @@
+#bike {
+    width: 400px;
+    height: 250px;
+    position: relative;
+    margin: 20px 0;
+    transition: all 3s ease-in-out;
+}
+
+/*wheels*/
+#backwheel, #frontwheel {
+    width: 120px;
+    height: 120px;
+    border: 8px solid black;
+    position: absolute;
+    top: 68px;
+    border-radius: 50%;
+    transition: all 3s ease-in-out;
+}
+#backwheel {
+    left: 35px;
+}
+#frontwheel {
+    left: 278px;
+}
+
+.center {
+    position: absolute;
+    top: 55px;
+    left: 55px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: black;
+}
+/*spokes*/
+div[class*="spoke"] {
+    height: 1px;
+    width: 60px;
+    background-color: black;
+    position: absolute;
+    top: 60px;
+    transform-origin: right;
+}
+.spoke2 {
+    transform: rotate(72deg);
+}
+.spoke3 {
+    transform: rotate(144deg);
+}
+.spoke4 {
+    transform: rotate(216deg);
+}
+.spoke5 {
+    transform: rotate(288deg);
+}
+/*frames*/
+#bike div[id*="frame"] {
+    height: 10px;
+    background-color: red;
+    position: absolute;
+    z-index: 2;
+    border-radius: 5px;
+}
+#frametop {
+    width: 163px;
+    top: 20px;
+    left: 158px;
+}
+#framechainstay {
+    width: 85px;
+    top: 131px;
+    left: 104px;
+}
+#framefork, #frameseattube {
+    width: 123px;
+    top: 75px;
+    left: 270px;
+    transform: rotate(75deg);
+}
+#frameseattube {
+    left: 112px;
+}
+#frameseatstay {
+    height: 6px !important;
+    width: 130px;
+    top: 78px;
+    left: 66px;
+    transform: rotate(-65deg);
+}
+#framedowntube {
+    width: 170px;
+    top: 78px;
+    left: 165px;
+    transform: rotate(-40deg);
+}
+/*handlebar*/
+.handlebars {
+    position: relative;
+    left: 310px;
+}
+#post {
+    width: 10px;
+    height: 10px;
+    background-color: silver;
+    position: absolute;
+    top: 10px;
+}
+#bar, #handle {
+    width: 50px;
+    height: 10px;
+    background-color: silver;
+    border-radius: 10px;
+    position: absolute;
+    top: 5px;
+    transform-origin: left;
+    transform: rotate(-20deg);
+}
+#handle {
+    width: 25px;
+    height: 12px;
+    background-color: black;
+    transform: rotate(-20deg) translateX(25px);
+}
+/*seat*/
+#seat {
+    background-color: black;
+    border-radius: 20px;
+    position: absolute;
+    left: 135px;
+    z-index: 3;
+}
+#base {
+    width: 30px;
+    height: 25px;
+}
+#nose {
+    width: 40px;
+    height: 15px;
+    background-color: black;
+    border-radius: 0 15px;
+    position: absolute;
+    top: 0;
+    left: 20px;
+}
+/*bike animation*/
+#bike.move {
+    transform: translateX(500px);
+}
+
+.spin {
+    transform: rotate(1080deg);
+}

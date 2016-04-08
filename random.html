@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RANDOM</title>
+    <script>
+        function randomStyle() {
+            var colors = ['red', 'green', 'blue', 'yellow', 'cyan', 'magenta', 'indigo', 'violet', 'lime', 'crimson'];
+            var $left = Math.floor(100 + Math.random()*1200) + 'px';
+            var $top = Math.floor(50 + Math.random()*600) + 'px';
+            var $width = Math.floor(Math.random()*100) + 'px';
+            var $height = Math.floor(Math.random()*40) + 'px';
+            var $colorBG = colors[Math.floor(Math.random()*colors.length)];
+            var $borderT = Math.floor(Math.random()*30) + 'px';
+            var $colorBT = colors[Math.floor(Math.random()*colors.length)];
+            var $borderB = Math.floor(Math.random()*30) + 'px';
+            var $colorBB = colors[Math.floor(Math.random()*colors.length)];
+            var $borderRadius = Math.round(Math.abs(Math.random()*100 - 50)) + '%';
+
+            return [$left, $top, $width, $height, $colorBG, $borderT, $colorBT, $borderB, $colorBB, $borderRadius];
+        }
+        var body = document.getElementsByTagName('body')[0];
+        function addDIV() {
+            var $styles = randomStyle();
+            var divTag = document.createElement('div');
+            divTag.style.left = $styles[0];
+            divTag.style.top = $styles[1];
+            divTag.style.width = $styles[2];
+            divTag.style.height = $styles[3];
+            divTag.style.backgroundColor = $styles[4];
+            divTag.style.borderTopWidth = $styles[5];
+            divTag.style.borderTopStyle = 'solid';
+            divTag.style.borderTopColor = $styles[6];
+            divTag.style.borderBottomWidth = $styles[7];
+            divTag.style.borderBottomStyle = 'solid';
+            divTag.style.borderBottomColor = $styles[8];
+            divTag.style.borderRadius = $styles[9];
+            divTag.style.position = 'fixed';
+
+            var body = document.getElementsByTagName('body')[0];
+            body.appendChild(divTag);
+        }
+        function clearDIV() {
+            var body = document.getElementsByTagName('body')[0];
+            var divs = document.getElementsByTagName('div');
+            if (divs.length > 20) {
+                body.removeChild(body.firstChild);
+            }
+        }
+        function sparklingDIV() {
+            var divs = document.getElementsByTagName('div');
+            var x = divs.length, y = Math.floor(Math.random()*x);
+            var div = divs[y];
+            div.style.opacity = '0.4';
+        }
+        setInterval(addDIV, 2000);
+        setInterval(clearDIV, 2000);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

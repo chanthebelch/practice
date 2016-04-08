@@ -1,0 +1,51 @@
+html {
+    font-size: 16px;
+}
+body {
+    background-color: #ddd;
+    font-size: 62.5%;  /* 1em = 10px */
+}
+article {
+    width: 900px;
+    margin: 0 auto;
+    padding: 20px 50px;
+    background-color: #aaa;
+    border: 3px solid #fff;
+    color: #fff;
+}
+h1 {
+    font-size: 3em;
+    text-align: center;
+    color: lime;
+}
+h2, h3 {
+    text-align: center;
+    color: lime;
+}
+section {
+    margin: 10px 0;
+    padding: 0 20px;
+    background-color: #777;
+    border: 3px solid #fff;
+    font-size: 1.4em;
+}
+h3+* {
+    background-color: #555;
+    padding: 10px 20px;
+}
+ul:not(:only-child) {}
+li {
+    margin: 1em 0;
+}
+table {
+    border-spacing: 1em;
+}
+code {
+    font-weight: bold;
+    color: lawngreen;
+}
+a {
+    color: #fff;
+    text-decoration: none;
+    font-family: cursive;
+}
