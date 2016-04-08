@@ -65,10 +65,8 @@ function displayACard() {
 
     // change the middle part of the card
     if (cardIndex < 10) {
-
         // remove v class for .middle>div>div
         cells.removeClass('v');
-
         // add a v class for the cells
         var edgeContents = cards[cardIndex][2];
         var centerContents = cards[cardIndex][3];

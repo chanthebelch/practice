@@ -1,0 +1,126 @@
+html {
+    font-size: 16px;
+}
+body {
+    font-size: 62.5%;
+}
+#control {
+    width: 320px;
+    background-color: darkcyan;
+    border-radius: 10px;
+    padding: 10px;
+    color: #fff;
+    position: fixed;
+    top: 50px;
+    right: 20px;
+}
+#control label {
+    font-size: 4em;
+}
+#card_reset {
+    float: right;
+}
+/* A, 2, 3,..., J, Q, K */
+#sample .name:after {
+/*    content: 'A';*/
+}
+/* 2666, 2663, 2665, 2660 */
+#sample .suit:after {
+/*    content: '\2660';*/
+}
+.card {
+    width: 200px;
+    height: 300px;
+    border: 1px solid #646464;
+    border-radius: 10px;
+    position: relative;
+}
+.topL, .btmR {
+    width: 40px;
+    height: 300px;
+    border-radius: 10px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    position: absolute;
+}
+.btmR {
+    top: 0;
+    right: 0;
+    transform: rotate(180deg);
+}
+.name, .suit {
+    font: 3em/.8em serif;
+    text-align: center;
+}
+.suit {
+    font-size: 4em;
+}
+.middle {
+    height: 300px;
+    box-sizing: border-box;
+    margin: 0 40px;
+    padding: 10px 0;
+}
+.middle>div {
+    float: left;
+    width: 40px;
+    height: 280px;  /* 300 - 10*2 */
+}
+
+/*suits*/
+.diamond, .heart {
+    color: #ff0000;
+}
+.club, .spade {
+    color: #000000;
+}
+.diamond .suit::after, .diamond .v::after {
+    content: '\2666';
+}
+.club .suit::after, .club .v::after {
+    content: '\2663';
+}
+.heart .suit::after, .heart .v::after {
+    content: '\2665';
+}
+.spade .suit::after, .spade .v::after {
+    content: '\2660';
+}
+/*layout styles for different cards*/
+.middle>div>div {
+    height: 56px;  /* (300-10*2)/5 */
+    box-sizing: border-box;
+    line-height: 56px;
+    font-size: 56px;
+    text-align: center;
+}
+.nine .edge>div, .ten>.middle>div>div {
+    height: 70px;  /* (300-10*2)/4 */
+    padding: 7px 0;  /* (70-56)/2 */
+}
+.nine .edge>div:last-child, .ten>.middle>div>div:last-child {
+    display: none;
+}
+.ten .center>div:first-child {
+    margin-bottom: -35px;  /* 70/2 */
+}
+.two .center>div:last-child, .three .center>div:last-child,
+.four .edge>div:last-child, .five .edge>div:last-child,
+.six .edge>div:last-child, .seven .edge>div:last-child,
+.eight .edge>div:last-child, .eight .center>div:nth-child(4),
+.nine .edge>div:nth-child(3), .nine .edge>div:nth-child(4),
+.ten .edge>div:nth-child(3), .ten>.middle>div>div:nth-child(4) {
+    transform: rotate(180deg);
+}
+/* layout style for J, Q, K */
+.jack>.middle div, .queen>.middle div, .king>.middle div {
+    display: none;
+}
+.middle>span {
+    text-align: center;
+    display: inline-block;
+    width: 120px;
+    height: 280px;
+    line-height: 280px;
+    font-size: 120px;
+}
