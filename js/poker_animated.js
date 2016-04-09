@@ -78,16 +78,16 @@ function displayACard(self, card) {
 $(document).ready(function() {
     var sample = $('#sample');
     var random = $('#random');
-    var card_name = $('#card_name');
-    var card_suit = $('#card_suit');
-    var card_color = $('#card_color');
+    var cardName = $('#card_name');
+    var cardSuit = $('#card_suit');
     var reset = $('#card_reset');
 
     function changeAcard() {
         var self = $(this), card = [];
         if (random.prop('checked') == false) {
-            var nameIndex = Math.floor(card_name.val() / 8);
-            var suitIndex = Math.floor(card_suit.val() / 30);
+            // slightly smaller than 13 and 4 respectively
+            var nameIndex = Math.floor(cardName.val() / 7.7);
+            var suitIndex = Math.floor(cardSuit.val() / 25.1);
             card = [nameIndex, suitIndex];
         }
         else {
@@ -97,18 +97,19 @@ $(document).ready(function() {
     }
 
     sample.on('click', changeAcard);
+    sample.trigger('click');
 
-    card_name.on('change', function() {
-        var index = Math.floor($(this).val() / 8);
+    cardName.on('change', function() {
+        var index = Math.floor($(this).val() / 7.7);
         var txt = cards[index][1];
         $(this).next().find('span').text(txt);
         if (random.prop('checked') == false) {
             sample.trigger('click');
         }
     });
-
-    card_suit.on('change', function() {
-        var index = Math.floor($(this).val() / 30);
+    //
+    cardSuit.on('change', function() {
+        var index = Math.floor($(this).val() / 25.1);
         var txt = suits[index][1];
         // text() does NOT work, you HAVE TO use html()
         $(this).next().find('span').html(txt);
@@ -116,20 +117,8 @@ $(document).ready(function() {
             sample.trigger('click');
         }
     });
-    // on('change', fn) works too!
-    card_color.on('input', function() {
-        var color = $(this).val();
-        $(this).next().find('span').text(color);
-        sample.css('color', color);
-    });
-
+    //
     reset.on('click', function() {
         $('#control label>span').text('');
-        if (sample.is('.diamond') || sample.is('.heart')) {
-            sample.css('color', '#f00');
-        }
-        else {
-            sample.css('color', '#000');
-        }
     });
 });
