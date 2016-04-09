@@ -11,14 +11,32 @@ body {
     padding: 10px;
     color: #fff;
     position: fixed;
-    top: 50px;
+    top: 350px;
     right: 20px;
+    text-shadow:
+        1px 1px #646464,
+        1px -1px #646464,
+        -1px 1px #646464,
+        -1px -1px #646464;
 }
 #control label {
     font-size: 4em;
 }
+#control input[type='button'] {
+    padding: 5px;
+    border-radius: 50%;
+    position: relative;
+    left: 20px;
+    top: -5px;
+}
 #card_reset {
     float: right;
+    margin-top: 20px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font: 2em/1em monospace;
+    box-shadow: 0 0 5px #646464;
 }
 /* A, 2, 3,..., J, Q, K */
 #sample .name:after {
@@ -28,12 +46,15 @@ body {
 #sample .suit:after {
 /*    content: '\2660';*/
 }
+#sample {
+    position: fixed;
+    right: 100px;
+}
 .card {
     width: 200px;
     height: 300px;
     border: 1px solid #646464;
     border-radius: 10px;
-    position: relative;
 }
 .topL, .btmR {
     width: 40px;
@@ -90,7 +111,7 @@ body {
 .middle>div>div {
     height: 56px;  /* (300-10*2)/5 */
     box-sizing: border-box;
-    line-height: 56px;
+    line-height: 50px;
     font-size: 56px;
     text-align: center;
 }

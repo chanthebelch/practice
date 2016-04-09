@@ -25,10 +25,7 @@ function getAllCards() {
     var allCards = [];
     for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 13; j++) {
-            var card = [];
-            card.push(suits[i][0]);
-            card.push(cards[j][0]);
-            allCards.push(card);
+            allCards.push([suits[i][0], cards[j][0]]);
         }
     }
     return allCards;
@@ -78,10 +75,11 @@ function displayACard(self, card) {
 $(document).ready(function() {
     var sample = $('#sample');
     var random = $('#random');
+    var go = $('#control input:button');
     var cardName = $('#card_name');
     var cardSuit = $('#card_suit');
     var reset = $('#card_reset');
-
+    //
     function changeAcard() {
         var self = $(this), card = [];
         if (random.prop('checked') == false) {
@@ -95,10 +93,26 @@ $(document).ready(function() {
         }
         displayACard(self, card);
     }
-
+    // initialize
     sample.on('click', changeAcard);
     sample.trigger('click');
-
+    go.nextAll('input').prop('disabled', true);
+    //
+    go.on('click', function() {
+        sample.trigger('click');
+    });
+    //
+    random.on('click', function() {
+        if (random.prop('checked')) {
+            go.prop('disabled', false);
+            go.nextAll('input').prop('disabled', true);
+        }
+        else {
+            go.prop('disabled', true);
+            go.nextAll('input').prop('disabled', false);
+        }
+    });
+    //
     cardName.on('change', function() {
         var index = Math.floor($(this).val() / 7.7);
         var txt = cards[index][1];
@@ -120,5 +134,8 @@ $(document).ready(function() {
     //
     reset.on('click', function() {
         $('#control label>span').text('');
+        cardName.val(50);
+        cardSuit.val(50);
+        random.trigger('click');
     });
 });
