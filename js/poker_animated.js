@@ -78,6 +78,7 @@ $(document).ready(function() {
     var go = $('#control input:button');
     var cardName = $('#card_name');
     var cardSuit = $('#card_suit');
+    var cardColor = $('#card_color');
     var reset = $('#card_reset');
     //
     function changeAcard() {
@@ -131,11 +132,18 @@ $(document).ready(function() {
             sample.trigger('click');
         }
     });
+    // on('change', fn) works too!
+    cardColor.on('input', function() {
+        var color = $(this).val();
+        $(this).next().find('span').text(color);
+        sample.css('color', color);
+    });
     //
     reset.on('click', function() {
         $('#control label>span').text('');
         cardName.val(50);
         cardSuit.val(50);
         random.trigger('click');
+        sample.removeAttr('style');
     });
 });
