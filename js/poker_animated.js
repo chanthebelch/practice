@@ -74,43 +74,50 @@ function displayACard(self, card) {
 
 $(document).ready(function() {
     var sample = $('#sample');
-    var random = $('#random');
-    var go = $('#control input:button');
     var cardName = $('#card_name');
     var cardSuit = $('#card_suit');
-    var cardColor = $('#card_color');
     var reset = $('#card_reset');
+    var enter = $('#enter');
+    var desk = $('#desk');
+    var passwordHolder = $('#password');
+    var $passwords = [];
     //
     function changeAcard() {
-        var self = $(this), card = [];
-        if (random.prop('checked') == false) {
-            // slightly smaller than 13 and 4 respectively
-            var nameIndex = Math.floor(cardName.val() / 7.7);
-            var suitIndex = Math.floor(cardSuit.val() / 25.1);
-            card = [nameIndex, suitIndex];
-        }
-        else {
-            card = randomCard();
-        }
+        var self = $(this), card = randomCard();
         displayACard(self, card);
     }
-    // initialize
-    sample.on('click', changeAcard);
-    sample.trigger('click');
-    go.nextAll('input').prop('disabled', true);
+    // initialize. add 4 cards to desk as passwords.
+    for (var i = 0; i < 4; i++) {
+        sample.clone(true).removeAttr('id').appendTo('#desk');
+    }
+    var deskCards = $('#desk .card');
+    deskCards.on('click', changeAcard);
+    deskCards.trigger('click').off();
+    cardName.prop('disabled', false);
+    cardSuit.prop('disabled', false);
+    enter.prop('disabled', true);
+    reset.prop('disabled', true);
     //
-    go.on('click', function() {
-        sample.trigger('click');
-    });
-    //
-    random.on('click', function() {
-        if (random.prop('checked')) {
-            go.prop('disabled', false);
-            go.nextAll('input').prop('disabled', true);
+    sample.on('click', function() {
+        var self = $(this), card = [];
+        // slightly smaller than 13 and 4 respectively
+        var nameIndex = Math.floor(cardName.val() / 7.7);
+        var suitIndex = Math.floor(cardSuit.val() / 25.1);
+        card = [nameIndex, suitIndex];
+        // x, y goes into passwordHolder, while $x, $y goes into $passwords
+        var x = cards[card[0]][1], y = suits[card[1]][1];
+        var $x = cards[card[0]][0], $y = suits[card[1]][0];
+        cardName.next().find('span').text(x);
+        cardSuit.next().find('span').html(y);
+        displayACard(self, card);
+        var z = passwordHolder.text().length;
+        if (z < 16) {
+            passwordHolder.append('['+x+y+']');
+            $passwords.push([$x, $y]);
+            reset.prop('disabled', false);
         }
-        else {
-            go.prop('disabled', true);
-            go.nextAll('input').prop('disabled', false);
+        if (z = 16) {
+            enter.prop('disabled', false);
         }
     });
     //
@@ -118,9 +125,6 @@ $(document).ready(function() {
         var index = Math.floor($(this).val() / 7.7);
         var txt = cards[index][1];
         $(this).next().find('span').text(txt);
-        if (random.prop('checked') == false) {
-            sample.trigger('click');
-        }
     });
     //
     cardSuit.on('change', function() {
@@ -128,22 +132,42 @@ $(document).ready(function() {
         var txt = suits[index][1];
         // text() does NOT work, you HAVE TO use html()
         $(this).next().find('span').html(txt);
-        if (random.prop('checked') == false) {
-            sample.trigger('click');
-        }
-    });
-    // on('change', fn) works too!
-    cardColor.on('input', function() {
-        var color = $(this).val();
-        $(this).next().find('span').text(color);
-        sample.css('color', color);
+        sample.trigger('click');
     });
     //
     reset.on('click', function() {
-        $('#control label>span').text('');
+        $('#control span').text('');
         cardName.val(50);
         cardSuit.val(50);
-        random.trigger('click');
-        sample.removeAttr('style');
+        enter.prop('disabled', true);
+        reset.prop('disabled', true);
+        $passwords = [];
+    });
+    enter.on('click', function() {
+        var passwords  = [];
+        var cardNodes = deskCards.toArray();
+        for (var i = 0, j = cardNodes.length; i < j; i++) {
+            var z = cardNodes[i].className.split(' ');
+            passwords.push([z[1], z[2]]);
+        }
+        if (passwords.toString() !== $passwords.toString()) {
+            $('#room').addClass('open');
+            deskCards.addClass('rotateCard');
+            desk.fadeTo(5000, 0, function() {
+                var backwall = $('#backwall');
+                for (var i = 0; i < 4; i++) {
+                    backwall.append($('<div class="egg">'));
+                }
+                desk.parentsUntil(backwall).remove();
+            });
+            sample.off();
+            $('input').prop('disabled', true);
+        }
+        else {
+            deskCards.on('click', changeAcard);
+            deskCards.trigger('click').off();
+            alert('CORRECT password! try again!');
+        }
+
     });
 });

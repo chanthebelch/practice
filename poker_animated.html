@@ -8,58 +8,82 @@
     <script src="js/jquery-ui.min.js"></script>
 </head>
 <body>
-    <section id="desk"></section>
-    <section id="sample" class="card">
-        <div class="topL">
-            <div class="name"></div>
-            <div class="suit"></div>
-        </div>
-        <div class="middle">
-            <div class="edge">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+    <main id="stage">
+        <section id="room">
+            <div id="ceiling" class="wall">
             </div>
-            <div class="center">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div id="leftwall" class="wall">
+                <div class="window">
+                    <div class="fan"></div>
+                </div>
             </div>
-            <div class="edge">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div id="rightwall" class="wall"></div>
+            <div id="floor" class="wall"></div>
+            <div id="backwall" class="wall">
+                <div>
+                    <form action="">
+                        <fieldset id="desk">
+                            <legend>password</legend>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="btmR">
-            <div class="name"></div>
-            <div class="suit"></div>
-        </div>
-    </section>
-    <section id="control">
-        <form action="">
-            <fieldset>
-                <legend>TEST CENTER</legend>
-                <input type="checkbox" id="random" name="random" checked>
-                <label for="random">random</label>
-                <input type="button" value="GO"><br>
-                <!--maybe range tag is a better option-->
-                <input type="range" id="card_name" name="card_name">
-                <label for="card_name">name: <span></span></label><br>
-                <input type="range" id="card_suit" name="card_suit">
-                <label for="card_suit">suit: <span></span></label><br>
-                <input type="color" id="card_color" name="card_color">
-                <label for="card_color">color: <span></span></label><br>
-                <input type="reset" id="card_reset" name="card_reset">
-            </fieldset>
-        </form>
-    </section>
+        </section>
+
+    </main>
+    <aside>
+        <section id="control">
+            <form action="">
+                <fieldset>
+                    <legend>display panel</legend>
+                    <div id="sample" class="card">
+                        <div class="topL">
+                            <div class="name"></div>
+                            <div class="suit"></div>
+                        </div>
+                        <div class="middle">
+                            <div class="edge">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="center">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="edge">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="btmR">
+                            <div class="name"></div>
+                            <div class="suit"></div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>control panel</legend>
+                    <span id="password"></span>
+                    <!--maybe range tag is a better option-->
+                    <input type="range" id="card_name" name="card_name">
+                    <label for="card_name">name: <span></span></label><br>
+                    <input type="range" id="card_suit" name="card_suit">
+                    <label for="card_suit">suit: <span></span></label><br>
+                    <input type="button" id="enter" value="ENTER">
+                    <input type="reset" id="card_reset" name="card_reset">
+                </fieldset>
+            </form>
+        </section>
+    </aside>
     <script src="js/poker_animated.js"></script>
 </body>
 </html>

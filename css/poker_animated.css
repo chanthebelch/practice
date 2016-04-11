@@ -2,41 +2,192 @@ html {
     font-size: 16px;
 }
 body {
+    min-width: 1200px;
     font-size: 62.5%;
+}
+main {
+    width: 70%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+/*animations*/
+#stage {
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -ms-perspective: 1000;
+    perspective: 1000;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+#desk {
+    width: 808px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -164px 0 0 -404px;
+}
+#desk .card {
+    float: left;
+}
+/*hidden room*/
+.wall {
+    position: absolute;
+}
+#ceiling {
+    width: 1000px;
+    height: 500px;
+    background-color: #17222d;
+    transform-origin: top;
+    transform: rotateX(-90deg);
+}
+#leftwall {
+    width: 500px;
+    height: 700px;
+    background-color: #2c6473;
+    transform-origin: left;
+    transform: rotateY(90deg);
+}
+#rightwall {
+    width: 500px;
+    height: 700px;
+    background-color: #2c6473;
+    right: 0;
+    transform-origin: right;
+    transform: rotateY(-90deg);
+}
+#backwall {
+    width: 1000px;
+    height: 700px;
+    background-color: #4cc0ca;
+    transition: all 2s ease-in-out 1s;
+}
+.open #backwall {
+    transform: translateZ(-500px);
+}
+#floor {
+    width: 1000px;
+    height: 500px;
+    background-color: #1a4c58;
+    top: 200px;
+    transform-origin: bottom;
+    transform: rotateX(90deg);
+}
+.window {
+    width: 260px;
+    height: 260px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: relative;
+    left: 100px;
+    top: 200px;
+}
+.egg {
+    display: inline-block;
+    width: 126px;
+    height: 180px;
+    background: #fff;
+    margin-right: 10px;
+    position: relative;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: inset 0 -20px 95px #aaa,
+        15px 20px 5px #646464;
+}
+.egg:first-child {
+    margin-left: 200px;
+}
+@keyframes flyingEgg {
+    0% {top: 480px}
+    100% {top: 200px;}
+}
+.open .egg {
+    animation: flyingEgg 2s ease-in-out forwards;
+}
+@keyframes fan {
+    0% {}
+    100% {transform: rotate(360deg)}
+}
+.open .fan {
+    position: relative;
+    left: 120px;
+    top: 120px;
+    background-color: #323232;
+    animation: fan 1s linear 8s infinite;
+}
+.open .fan, .open .fan:before, .open .fan:after {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.open .fan:before, .open .fan:after {
+    content: '';
+    border-width: 120px 80px;
+    border-style: solid;
+    border-color: #646464 transparent #646464 transparent;
+    position: absolute;
+    left: -80px;
+    top: -120px;
+}
+.open .fan:after {
+    transform: rotate(90deg);
+}
+
+aside {
+    width: 30%;
+    min-width: 400px;
+    background-color: #4cc0ca;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
 #control {
     width: 360px;
     background-color: darkcyan;
     border-radius: 10px;
+    margin: 10px auto;
     padding: 10px;
     color: #fff;
-    position: fixed;
-    top: 350px;
-    right: 20px;
+    position: relative;
+    top: 50px;
+}
+input[type="range"] {
+    cursor: e-resize;
+}
+input:disabled {
+    cursor: not-allowed;
+}
+#control label {
+    font-size: 3em;
     text-shadow:
         1px 1px #646464,
         1px -1px #646464,
         -1px 1px #646464,
         -1px -1px #646464;
 }
-#control label {
-    font-size: 4em;
-}
-#control input[type='button'] {
-    padding: 5px;
-    border-radius: 50%;
+#password {
+    display: block;
+    width: 180px;
+    height: 30px;
+    background-color: #fff;
+    color: #000;
+    font: 1.5em/2em monospace;
+    text-align: center;
     position: relative;
-    left: 20px;
-    top: -5px;
+    left: 50%;
+    margin: 5px 0 20px -90px;
+}
+#enter, #card_reset {
+    border-radius: 10px;
+    text-transform: uppercase;
+    font: 1.5em/1em monospace;
+    box-shadow: 0 0 5px #646464;
 }
 #card_reset {
     float: right;
-    margin-top: 20px;
-    padding: 5px 10px;
-    border-radius: 10px;
-    text-transform: uppercase;
-    font: 2em/1em monospace;
-    box-shadow: 0 0 5px #646464;
 }
 /* A, 2, 3,..., J, Q, K */
 #sample .name:after {
@@ -47,14 +198,15 @@ body {
 /*    content: '\2660';*/
 }
 #sample {
-    position: fixed;
-    right: 100px;
+    margin: 0 auto;
 }
 .card {
     width: 200px;
     height: 300px;
+    background-color: #fff;
     border: 1px solid #646464;
     border-radius: 10px;
+    position: relative;
 }
 .topL, .btmR {
     width: 40px;
