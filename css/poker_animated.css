@@ -93,7 +93,7 @@ main {
     margin-right: 10px;
     position: relative;
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    box-shadow: inset 0 -20px 95px #aaa,
+    box-shadow: inset -20px -40px 95px #aaa,
         15px 20px 5px #646464;
 }
 .egg:first-child {
